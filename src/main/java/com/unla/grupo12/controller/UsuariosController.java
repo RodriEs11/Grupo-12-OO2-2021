@@ -60,18 +60,11 @@ public class UsuariosController {
 		
 		List<Usuario> usuarios = usuarioService.getAll();
 		List<Perfil> perfiles = perfilService.getAll();
-		
 		modelo.addObject("usuarios", usuarios);
 		modelo.addObject("perfiles", perfiles);
-		
-		
-		
 		return modelo;
 
 	}
-	
-	
-	
 	
 	/* PESTAÑA AGREGAR USUARIO A BD
 	 * SE TRAEN, A TRAVES DEL SERVICIO DE PERFIL, TODOS LOS PERFILES CARGADOS EN LA BD,
@@ -89,8 +82,6 @@ public class UsuariosController {
 		
 		modelo.addObject("perfiles", perfiles);
 		modelo.addObject("usuario", new Usuario());
-		
-		
 
 		return modelo;
 

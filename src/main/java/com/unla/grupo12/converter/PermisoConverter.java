@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("personaConverter")
+@Component("permisoConverter")
 public class PermisoConverter {
 
   @Autowired
