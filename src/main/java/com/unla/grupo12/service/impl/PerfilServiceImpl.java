@@ -8,13 +8,13 @@ import com.unla.grupo12.converter.PerfilConverter;
 import com.unla.grupo12.entity.Perfil;
 import com.unla.grupo12.model.PerfilModel;
 import com.unla.grupo12.repository.IPerfilRepository;
+import com.unla.grupo12.repository.IPeriodoRepository;
 import com.unla.grupo12.service.IPerfilService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -89,6 +89,7 @@ public class PerfilServiceImpl implements IPerfilService {
 	private static Logger logger = LoggerFactory.getLogger(PerfilServiceImpl.class);
 
 	public List<PerfilModel> listPerfil() {
+
     List<PerfilModel> perfilList = new ArrayList<PerfilModel>();
     perfilList = perfilConverter.listPerfil(perfilRepository.findAll());
     return perfilList;

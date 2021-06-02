@@ -48,7 +48,7 @@ public class PermisoConverter {
 
   public Permiso modelToEntity(PermisoModel permisoModel) {
 
-    return new Permiso(permisoModel.getIdPermiso(), personaConverter.modelToEntity(permisoModel.getPedido()),
+    return new Permiso( personaConverter.modelToEntity(permisoModel.getPedido()),
         permisoModel.getFecha(), lugarConverter.listLugar(permisoModel.getDesdeHasta()));
   }
 

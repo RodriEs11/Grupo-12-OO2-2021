@@ -1,31 +1,21 @@
 package com.unla.grupo12.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
-
 import com.unla.grupo12.converter.PerfilConverter;
-import com.unla.grupo12.converter.UsuarioConverter;
 import com.unla.grupo12.entity.Perfil;
 import com.unla.grupo12.entity.Usuario;
 import com.unla.grupo12.helpers.ViewRouteHelper;
 import com.unla.grupo12.model.UsuarioModel;
 import com.unla.grupo12.service.IPerfilService;
 import com.unla.grupo12.service.IUsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 
 

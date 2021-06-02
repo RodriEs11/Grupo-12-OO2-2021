@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "permiso")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Permiso implements java.io.Serializable{
 
   @Id
@@ -32,6 +33,12 @@ public class Permiso implements java.io.Serializable{
     this.desdeHasta = desdeHasta;
   }
 
+  public Permiso(Persona pedido, LocalDate fecha, Set<Lugar> desdeHasta) {
+    this.idPermiso = idPermiso;
+    this.pedido = pedido;
+    this.fecha = fecha;
+    this.desdeHasta = desdeHasta;
+  }
   public Permiso() {
   }
 

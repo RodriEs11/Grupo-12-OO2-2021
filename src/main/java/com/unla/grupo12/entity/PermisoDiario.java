@@ -1,11 +1,13 @@
 package com.unla.grupo12.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Set;
 
 
 @Entity
+@Table(name = "permiso_diario")
 public class PermisoDiario extends Permiso {
 
   private String motivo;

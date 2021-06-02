@@ -1,11 +1,10 @@
 package com.unla.grupo12.service;
 
-import java.io.ByteArrayInputStream;
-import java.util.List;
-
-import com.unla.grupo12.entity.Perfil;
 import com.unla.grupo12.entity.Usuario;
 import com.unla.grupo12.model.UsuarioModel;
+
+import java.io.ByteArrayInputStream;
+import java.util.List;
 
 public interface IUsuarioService {
 

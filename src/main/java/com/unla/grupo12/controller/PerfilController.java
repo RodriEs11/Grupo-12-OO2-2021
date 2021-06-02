@@ -1,8 +1,10 @@
 package com.unla.grupo12.controller;
 
+import com.unla.grupo12.entity.PermisoPeriodo;
 import com.unla.grupo12.helpers.ViewRouteHelper;
 import com.unla.grupo12.model.PerfilModel;
 import com.unla.grupo12.service.IPerfilService;
+import com.unla.grupo12.service.IPermisoPeriodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -26,6 +28,7 @@ public class PerfilController {
 
   @Autowired
   private IPerfilService perfilService;
+
 
   @PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
   @GetMapping("/lista-perfiles")

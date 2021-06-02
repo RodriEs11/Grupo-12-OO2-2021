@@ -6,9 +6,13 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.Set;
 
 
 @Entity
+@Table(name = "permiso_periodo")
 public class PermisoPeriodo extends Permiso {
 
   private int cantDias;
@@ -17,6 +21,13 @@ public class PermisoPeriodo extends Permiso {
   @LazyCollection(LazyCollectionOption.FALSE)
   @JoinColumn(name = "rodado_id")
   private Rodado rodado;
+
+  public PermisoPeriodo(Persona pedido, LocalDate fecha, Set<Lugar> desdeHasta, int cantDias, boolean vacaciones, Rodado rodado) {
+    super( pedido, fecha, desdeHasta);
+    this.cantDias = cantDias;
+    this.vacaciones = vacaciones;
+    this.rodado = rodado;
+  }
 
   public PermisoPeriodo(int cantDias, boolean vacaciones, Rodado rodado) {
     this.cantDias = cantDias;

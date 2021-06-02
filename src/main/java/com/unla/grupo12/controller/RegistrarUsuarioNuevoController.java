@@ -1,7 +1,12 @@
 package com.unla.grupo12.controller;
 
-import java.util.List;
-
+import com.unla.grupo12.converter.PerfilConverter;
+import com.unla.grupo12.entity.Perfil;
+import com.unla.grupo12.entity.Usuario;
+import com.unla.grupo12.helpers.ViewRouteHelper;
+import com.unla.grupo12.model.UsuarioModel;
+import com.unla.grupo12.service.IPerfilService;
+import com.unla.grupo12.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,13 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.unla.grupo12.converter.PerfilConverter;
-import com.unla.grupo12.entity.Perfil;
-import com.unla.grupo12.entity.Usuario;
-import com.unla.grupo12.helpers.ViewRouteHelper;
-import com.unla.grupo12.model.UsuarioModel;
-import com.unla.grupo12.service.IPerfilService;
-import com.unla.grupo12.service.IUsuarioService;
+import java.util.List;
 
 @Controller
 @RequestMapping("/registrarse")

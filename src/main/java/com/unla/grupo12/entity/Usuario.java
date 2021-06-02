@@ -2,8 +2,6 @@ package com.unla.grupo12.entity;
 
 import lombok.Data;
 
-import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity

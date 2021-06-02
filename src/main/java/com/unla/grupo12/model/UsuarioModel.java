@@ -1,9 +1,7 @@
 package com.unla.grupo12.model;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import com.unla.grupo12.entity.Perfil;
-import lombok.Data;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 public class UsuarioModel {

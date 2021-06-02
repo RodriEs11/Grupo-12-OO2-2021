@@ -1,32 +1,20 @@
 package com.unla.grupo12.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-
-import com.unla.grupo12.entity.Perfil;
-import com.unla.grupo12.entity.Usuario;
 import com.unla.grupo12.helpers.ViewRouteHelper;
-import com.unla.grupo12.model.PerfilModel;
 import com.unla.grupo12.model.UsuarioModel;
-import com.unla.grupo12.service.IPerfilService;
 import com.unla.grupo12.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.servlet.ModelAndView;
-
-import com.unla.grupo12.helpers.ViewRouteHelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

@@ -1,7 +1,6 @@
 package com.unla.grupo12.service.impl;
 
 import com.unla.grupo12.converter.RodadoConverter;
-import com.unla.grupo12.entity.Perfil;
 import com.unla.grupo12.entity.Rodado;
 import com.unla.grupo12.model.RodadoModel;
 import com.unla.grupo12.repository.IRodadoRepository;
