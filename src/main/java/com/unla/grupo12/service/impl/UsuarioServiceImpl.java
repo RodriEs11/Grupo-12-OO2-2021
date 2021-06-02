@@ -85,11 +85,11 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService {
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
 
 		Usuario usuario = usuarioRepository.findByNombreUsuarioYPerfil(nombreUsuario);
-		
+
 		Set<Perfil> perfilesDeUsuario = new HashSet<>();
-		
+
 		perfilesDeUsuario.add(usuario.getPerfil());
-		
+
 		return buildUser(usuario, buildGrantedAuthorities(perfilesDeUsuario));
 	}
 
@@ -131,12 +131,15 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService {
 			PdfWriter.getInstance(document, out);
 			document.open();
 			Font font = FontFactory.getFont(FontFactory.COURIER, 14, BaseColor.BLACK);
-			Paragraph para = new Paragraph(" Lista de Usuarios", font);
+			Paragraph para = new Paragraph(" Lista de Usuarios Activos", font);
 			para.setAlignment(Element.ALIGN_CENTER);
 			document.add(para);
 			document.add(Chunk.NEWLINE);
 
-			PdfPTable table = new PdfPTable(9);
+			PdfPTable tableActivos = new PdfPTable(9);
+			
+			PdfPTable tableInactivos = new PdfPTable(9);
+			
 			Stream.of("Id", "Nombre", "Apellido", "Documento", " Tipo Doc", "E-mail", "Usuario ", "Perfil")
 					.forEach(headerTitle -> {
 						PdfPCell header = new PdfPCell();
@@ -148,61 +151,130 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService {
 							header.setColspan(2);
 						}
 						header.setPhrase(new Phrase(headerTitle, headFont));
-						table.addCell(header);
+						tableActivos.addCell(header);
 					});
-
+			
+			
+			
 			for (UsuarioModel usuarioModel : listaUsuario) {
-				PdfPCell idCell = new PdfPCell(new Phrase(usuarioModel.getId().toString()));
-				idCell.setPaddingLeft(4);
-				idCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				idCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(idCell);
 
-				PdfPCell nombreCell = new PdfPCell(new Phrase(usuarioModel.getNombre()));
-				nombreCell.setPaddingLeft(4);
-				nombreCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				nombreCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(nombreCell);
+				if (usuarioModel.isActivo()) {
 
-				PdfPCell apellidoCell = new PdfPCell(new Phrase(usuarioModel.getApellido()));
-				apellidoCell.setPaddingLeft(4);
-				apellidoCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				apellidoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(apellidoCell);
+					PdfPCell idCell = new PdfPCell(new Phrase(usuarioModel.getId().toString()));
+					idCell.setPaddingLeft(4);
+					idCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					idCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableActivos.addCell(idCell);
 
-				PdfPCell nDocCell = new PdfPCell(new Phrase(usuarioModel.getNroDocumento().toString()));
-				nDocCell.setPaddingLeft(4);
-				nDocCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				nDocCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(nDocCell);
+					PdfPCell nombreCell = new PdfPCell(new Phrase(usuarioModel.getNombre()));
+					nombreCell.setPaddingLeft(4);
+					nombreCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					nombreCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableActivos.addCell(nombreCell);
 
-				PdfPCell tipoCell = new PdfPCell(new Phrase(usuarioModel.getTipoDocumento()));
-				tipoCell.setPaddingLeft(4);
-				tipoCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				tipoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(tipoCell);
+					PdfPCell apellidoCell = new PdfPCell(new Phrase(usuarioModel.getApellido()));
+					apellidoCell.setPaddingLeft(4);
+					apellidoCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					apellidoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableActivos.addCell(apellidoCell);
 
-				PdfPCell emailCell = new PdfPCell(new Phrase(usuarioModel.getEmail()));
-				emailCell.setPaddingLeft(4);
-				emailCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				emailCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				emailCell.setColspan(2);
-				table.addCell(emailCell);
+					PdfPCell nDocCell = new PdfPCell(new Phrase(usuarioModel.getNroDocumento().toString()));
+					nDocCell.setPaddingLeft(4);
+					nDocCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					nDocCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableActivos.addCell(nDocCell);
 
-				PdfPCell usuarioCell = new PdfPCell(new Phrase(usuarioModel.getUsuario()));
-				usuarioCell.setPaddingLeft(4);
-				usuarioCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				usuarioCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(usuarioCell);
+					PdfPCell tipoCell = new PdfPCell(new Phrase(usuarioModel.getTipoDocumento()));
+					tipoCell.setPaddingLeft(4);
+					tipoCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					tipoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableActivos.addCell(tipoCell);
 
-				PdfPCell perfilCell = new PdfPCell(new Phrase(usuarioModel.getPerfil().getNombre()));
-				perfilCell.setPaddingLeft(4);
-				perfilCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				perfilCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(perfilCell);
+					PdfPCell emailCell = new PdfPCell(new Phrase(usuarioModel.getEmail()));
+					emailCell.setPaddingLeft(4);
+					emailCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					emailCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					emailCell.setColspan(2);
+					tableActivos.addCell(emailCell);
+
+					PdfPCell usuarioCell = new PdfPCell(new Phrase(usuarioModel.getUsuario()));
+					usuarioCell.setPaddingLeft(4);
+					usuarioCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					usuarioCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableActivos.addCell(usuarioCell);
+
+					PdfPCell perfilCell = new PdfPCell(new Phrase(usuarioModel.getPerfil().getNombre()));
+					perfilCell.setPaddingLeft(4);
+					perfilCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					perfilCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableActivos.addCell(perfilCell);
+					
+				}else {
+					
+					PdfPCell idCell = new PdfPCell(new Phrase(usuarioModel.getId().toString()));
+					idCell.setPaddingLeft(4);
+					idCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					idCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableInactivos.addCell(idCell);
+
+					PdfPCell nombreCell = new PdfPCell(new Phrase(usuarioModel.getNombre()));
+					nombreCell.setPaddingLeft(4);
+					nombreCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					nombreCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableInactivos.addCell(nombreCell);
+
+					PdfPCell apellidoCell = new PdfPCell(new Phrase(usuarioModel.getApellido()));
+					apellidoCell.setPaddingLeft(4);
+					apellidoCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					apellidoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableInactivos.addCell(apellidoCell);
+
+					PdfPCell nDocCell = new PdfPCell(new Phrase(usuarioModel.getNroDocumento().toString()));
+					nDocCell.setPaddingLeft(4);
+					nDocCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					nDocCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableInactivos.addCell(nDocCell);
+
+					PdfPCell tipoCell = new PdfPCell(new Phrase(usuarioModel.getTipoDocumento()));
+					tipoCell.setPaddingLeft(4);
+					tipoCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					tipoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableInactivos.addCell(tipoCell);
+
+					PdfPCell emailCell = new PdfPCell(new Phrase(usuarioModel.getEmail()));
+					emailCell.setPaddingLeft(4);
+					emailCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					emailCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					emailCell.setColspan(2);
+					tableInactivos.addCell(emailCell);
+
+					PdfPCell usuarioCell = new PdfPCell(new Phrase(usuarioModel.getUsuario()));
+					usuarioCell.setPaddingLeft(4);
+					usuarioCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					usuarioCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableInactivos.addCell(usuarioCell);
+
+					PdfPCell perfilCell = new PdfPCell(new Phrase(usuarioModel.getPerfil().getNombre()));
+					perfilCell.setPaddingLeft(4);
+					perfilCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+					perfilCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+					tableInactivos.addCell(perfilCell);
+					
+				}
+
 			}
-			document.add(table);
-			document.close();
+			document.add(tableActivos);
+			document.add(Chunk.NEWLINE);
+			Paragraph noActivos = new Paragraph(" Lista de Usuarios No Activos", font);
+			noActivos.setAlignment(Element.ALIGN_CENTER);
+			
+			document.add(noActivos);
+			document.add(Chunk.NEWLINE);
+			document.add(tableInactivos);
+			
+			
+			
+			
 		} catch (DocumentException e) {
 			logger.error(e.toString());
 		}
@@ -212,10 +284,8 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService {
 	@Override
 	public boolean logoutUsuario() {
 		SecurityContextHolder.getContext().setAuthentication(null);
-		
+
 		return true;
 	}
-
-	
 
 }

@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Modern Business - Start Bootstrap Template</title>
+	<title>Grupo 12</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@
 	<div class="container">
 
 		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">Usuarios en la BD
+		<h1 class="mt-4 mb-3">Usuarios activos en la BD
 			<small></small>
 		</h1>
 
@@ -104,24 +104,28 @@
 			<tbody>
 
 				<tr th:each="usuario : ${listaUsuarios}">
+					<div th:if="${usuario.isActivo()}">
+						<td> <span th:text="${usuario.id}" /> </td>
+						<td> <span th:text="${usuario.usuario}" /> </td>
+						<td> <span th:text="${usuario.apellido}" /> </td>
+						<td> <span th:text="${usuario.nombre}" /> </td>
+						<td> <span th:text="${usuario.email}" /> </td>
+						<td> <span th:text="${usuario.nroDocumento}" /> </td>
+						<td th:if="${usuario.perfil != null}">
+							<span th:text="${usuario.perfil.getNombre()}"> </span>
 
-					<td> <span th:text="${usuario.id}" /> </td>
-					<td> <span th:text="${usuario.usuario}" /> </td>
-					<td> <span th:text="${usuario.apellido}" /> </td>
-					<td> <span th:text="${usuario.nombre}" /> </td>
-					<td> <span th:text="${usuario.email}" /> </td>
-					<td> <span th:text="${usuario.nroDocumento}" /> </td>
-					<td th:if="${usuario.perfil != null}">
-						<span th:text="${usuario.perfil.getNombre()}"> </span>
-					</td>
+						</td>
 
 
 
-					<td> <a class="btn btn-primary" th:href="@{'/usuarios/editar/' + ${usuario.id}}"> Editar </a> </td>
+						<td> <a class="btn btn-primary" th:href="@{'/usuarios/editar/' + ${usuario.id}}"> Editar </a>
+						</td>
 
-					<td> <a class="btn btn-primary" th:href="@{'/usuarios/eliminar/' + ${usuario.id}}"> Eliminar</a>
-					</td>
+						<td> <a class="btn btn-primary" th:href="@{'/usuarios/eliminar/' + ${usuario.id}}"> Eliminar</a>
+						</td>
 
+
+					</div>
 				</tr>
 
 			</tbody>
@@ -138,7 +142,7 @@
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+			<p class="m-0 text-center text-white">Grupo 12 OO2 2021</p>
 		</div>
 
 

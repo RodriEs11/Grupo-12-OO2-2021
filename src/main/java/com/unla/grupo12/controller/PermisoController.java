@@ -19,7 +19,7 @@ import com.unla.grupo12.service.IPermisoService;
 public class PermisoController {
 
 	
-	@PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
+	
 	@GetMapping("")
 	public String index() {
 		

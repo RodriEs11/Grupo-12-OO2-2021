@@ -25,6 +25,7 @@ public class UsuarioConverter {
 		      usuarioModel.setUsuario(u.getUsuario());
 		      usuarioModel.setClave(u.getClave());
 		      usuarioModel.setPerfil(u.getPerfil());
+		      usuarioModel.setActivo(u.isActivo());
 		      usuarioModelList.add(usuarioModel);
 		    }
 		    return usuarioModelList;
@@ -45,6 +46,7 @@ public class UsuarioConverter {
 		      usuario.setUsuario(u.getUsuario());
 		      usuario.setClave(u.getClave());
 		      usuario.setPerfil(u.getPerfil());
+		      usuario.setActivo(u.isActivo());
 		      usuarioList.add(usuario);
 		    }
 		    return usuarioList;
