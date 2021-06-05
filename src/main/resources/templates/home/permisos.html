@@ -119,19 +119,22 @@
 
 				<thead>
 					<tr>
-						<th> Permiso </th>
-						<th> Desde </th>
-						<th> Hasta </th>
+						<th> Fecha </th>
+						<th> Lugar </th>
+						<th> Persona </th>
+						
+						
 					</tr>
 
 				</thead>
 
 				<tbody>
 
-					<tr>
-						<td> Motivo Permiso </td>
-						<td> fecha desde</td>
-						<td> fecha hasta</td>
+					<tr th:each="listaDePermisos : ${listaDePermisos}">
+						<td> <span th:text="${listaDePermisos.fecha}"/> </td>
+						<td> <span th:text="${listaDePermisos.desdeHasta}"/> </td>
+						<td><span th:text="${listaDePermisos.pedido.nombre}"/> </td>
+						
 						
 						
 					</tr>

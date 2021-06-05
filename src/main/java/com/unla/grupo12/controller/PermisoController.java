@@ -1,14 +1,22 @@
 package com.unla.grupo12.controller;
 
+import com.unla.grupo12.entity.Permiso;
 import com.unla.grupo12.entity.PermisoPeriodo;
 import com.unla.grupo12.helpers.ViewRouteHelper;
+import com.unla.grupo12.model.PermisoModel;
 import com.unla.grupo12.service.IPermisoPeriodoService;
+import com.unla.grupo12.service.IPermisoService;
+
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +31,11 @@ public class PermisoController {
   @Autowired
   @Qualifier("permisoPeriodoService")
   private IPermisoPeriodoService permisoPeriodoService;
+  
+  @Autowired
+  @Qualifier("permisoService")
+  private IPermisoService permisoService;
+
 
   @PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
   @PostMapping("/buscar")
@@ -50,14 +63,32 @@ public class PermisoController {
 		return ViewRouteHelper.PERMISOS_AGREGAR;
 	}
 	
-	@PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
+	
+	
+	
 	@GetMapping("ver")
-	public ModelAndView mostrarPermisosActivos() {
+	public ModelAndView mostrarPermisosActivos(Model fecha) {
+		
+		List<PermisoModel> listaDePermisos = permisoService.listPermisoModel();
+		List<PermisoModel> listaDePermisosActivos = null;
+		
+		
+		System.out.println(listaDePermisos.size()); 
+		
+		
+		
+		 
 		
 		ModelAndView mov = new ModelAndView(ViewRouteHelper.PERMISOS_INDEX);
-		
+
+		mov.addObject("listaDePermisos", listaDePermisos);	
 		
 		return mov;
 	}
+	
+	
+	
+	
+	
 	
 }
