@@ -2,27 +2,19 @@ package com.unla.grupo12.controller;
 
 import com.unla.grupo12.entity.PermisoPeriodo;
 import com.unla.grupo12.helpers.ViewRouteHelper;
-import com.unla.grupo12.model.UsuarioModel;
 import com.unla.grupo12.service.IPermisoPeriodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
-import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.unla.grupo12.helpers.ViewRouteHelper;
-import com.unla.grupo12.model.PermisoPeriodoModel;
-import com.unla.grupo12.service.IPermisoPeriodoService;
-import com.unla.grupo12.service.IPermisoService;
 
 @Controller
 @RequestMapping("/permiso")

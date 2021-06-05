@@ -31,38 +31,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-	<!-- Navigation -->
-	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="/">Inicio</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="/lista-usuarios">Usuarios</a>
                 </li>
 
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/permiso/ver">Permisos</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-					<li class="nav-item">
-						<a class="nav-link" href="/permiso/ver">Permisos</a>
-					</li>
-
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">
-							User
-						</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="/logout">Logout</a>
 
 <!-- Page Content -->
 <div class="container">
@@ -78,8 +61,6 @@
 
     <!-- Team Members -->
 
-	<!-- Page Content -->
-	<div class="container">
 
     <table cellpadding="5">
 
@@ -97,10 +78,10 @@
             <td><span th:text="${perfil.nombre}"/></td>
             <td><a class="btn btn-primary" th:href="@{'/perfiles/editar/' + ${perfil.id}}"> Editar </a></td>
 
-					<td> <a class="btn btn-primary" th:href="@{'/perfiles/eliminar/' + ${perfil.id}}"> Eliminar</a>
-					</td>
-				</tr>
-			</tbody>
+            <td> <a class="btn btn-primary" th:href="@{'/perfiles/eliminar/' + ${perfil.id}}"> Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
 
     </table>
 

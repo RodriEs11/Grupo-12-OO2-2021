@@ -68,12 +68,7 @@ public class RodadoController {
   }
 
 
-	@GetMapping("")
-	public String index() {
-		
-		
-		return ViewRouteHelper.RODADO_AGREGAR;
-	}
+
 	
 }
 

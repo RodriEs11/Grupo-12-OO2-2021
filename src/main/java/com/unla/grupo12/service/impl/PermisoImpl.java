@@ -21,7 +21,7 @@ public class PermisoImpl implements IPermisoService{
 
 	
 	@Autowired
-	@Qualifier("permisoRepository")
+	@Qualifier("permiso")
 	private IPermisoRepository permisoRepository;
 
 	@Autowired
