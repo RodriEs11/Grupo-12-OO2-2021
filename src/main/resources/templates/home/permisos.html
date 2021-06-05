@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Usuarios</title>
+	<title>Modern Business - Start Bootstrap Template</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -69,70 +69,94 @@
 	<!-- Page Content -->
 	<div class="container">
 
-		</br>
-		</br>
-		<h1 class="mt-4 mb-3">Usuarios
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">Permisos
 			<small></small>
 		</h1>
-		<!-- Intro Content -->
+
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="/">Home</a>
+			</li>
+			<li class="breadcrumb-item active">Permisos</li>
+		</ol>
 
 
-		<!-- Team Members -->
+		<div class="container">
+
+			<div class="col-12 col-md-6 col-lg-4 mx-auto mt-5">
+				<h1 class="text-center"> Ver permisos</h1>
+
+				<form>
+
+					<div class="controls">
+						<label> Desde </label>
+						<input type="date" class="form-control" required
+							data-validation-required-message="Ingrese la fecha">
+						<p> </p>
+					</div>
 
 
-		<table cellpadding="5">
-
-			<thead>
-				<tr>
-
-					<th> usuario </th>
-					<th> Apellido </th>
-					<th> Nombre </th>
-					<th> Email </th>
-					<th> Documento </th>
-					<th> Perfil </th>
-
-				</tr>
-			</thead>
-			<tbody>
-
-				<tr th:each="usuario : ${listaUsuarios}">
-
-
-					<td> <span th:text="${usuario.usuario}" /> </td>
-					<td> <span th:text="${usuario.apellido}" /> </td>
-					<td> <span th:text="${usuario.nombre}" /> </td>
-					<td> <span th:text="${usuario.email}" /> </td>
-					<td> <span th:text="${usuario.nroDocumento}" /> </td>
-					<td th:if="${usuario.perfil != null}">
-						<span th:text="${usuario.perfil.getNombre()}"> </span>
-					</td>
+					<div class="controls">
+						<label> Hasta </label>
+						<input type="date" class="form-control" required
+							data-validation-required-message="Ingrese la fecha">
+						<p> </p>
+					</div>
 
 
 
-					<td> <a class="btn btn-primary" th:href="@{'/usuarios/editar/' + ${usuario.id}}"> Editar </a> </td>
+					<p> </p>
+					<button type="submit" class="btn btn-primary" id="sendMessageButton">Ver</button>
+					<p> </p>
 
-					<td> <a class="btn btn-primary" th:href="@{'/usuarios/eliminar/' + ${usuario.id}}"> Eliminar</a>
-					</td>
+				</form>
 
-				</tr>
+			</div>
 
-			</tbody>
 
-		</table>
+			<table cellpadding="5">
 
-		<a class="btn btn-primary" th:href="@{/usuarios/agregar}"> Agregar</a> </td>
-		<a class="btn btn-primary" th:href="@{/usuarios-pdf}" target="_blank"> Generar PDF</a> </td>
+				<thead>
+					<tr>
+						<th> Permiso </th>
+						<th> Desde </th>
+						<th> Hasta </th>
+					</tr>
 
-		<p> </p>
+				</thead>
+
+				<tbody>
+
+					<tr>
+						<td> Motivo Permiso </td>
+						<td> fecha desde</td>
+						<td> fecha hasta</td>
+						
+						
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+
+
+
+
+
 	</div>
 
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+		</div>
+		<!-- /.container -->
+	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
 
 </body>
 

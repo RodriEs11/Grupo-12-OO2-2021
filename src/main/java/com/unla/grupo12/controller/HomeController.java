@@ -2,8 +2,16 @@ package com.unla.grupo12.controller;
 
 import com.unla.grupo12.helpers.ViewRouteHelper;
 import com.unla.grupo12.model.UsuarioModel;
+import com.unla.grupo12.model.PerfilModel;
+import com.unla.grupo12.model.PermisoModel;
+import com.unla.grupo12.model.PersonaModel;
+import com.unla.grupo12.model.UsuarioModel;
+import com.unla.grupo12.service.IPerfilService;
+import com.unla.grupo12.service.IPermisoService;
+import com.unla.grupo12.service.IPersonaService;
 import com.unla.grupo12.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -30,7 +38,13 @@ public class HomeController {
 	@Autowired
 	private IUsuarioService usuarioService;
 
+	@Autowired
+	@Qualifier("personaService")
+	private IPersonaService personaService;
 	
+	@Autowired
+	@Qualifier("permisoService")
+	private IPermisoService permisoService;
 
 	@PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
 	@GetMapping("/")
@@ -86,5 +100,21 @@ public class HomeController {
 		headers.add("Content-Disposition", "inline; filename=ListaUsuarios.pdf");
 		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
 				.body(new InputStreamResource(pdf));
+	}
+	
+	@GetMapping("/lista-personas")
+	public ModelAndView listaPersonas() {
+		ModelAndView mov = new ModelAndView(ViewRouteHelper.PERSONAS);
+		List<PersonaModel> list = personaService.listPersonaModel();
+		mov.addObject("listaPersonas", list);
+		return mov;
+	}
+	
+	@GetMapping("/lista-permisos")
+	public ModelAndView listaPermisos() {
+		ModelAndView mov = new ModelAndView(ViewRouteHelper.ListPERMISOS);
+		List<PermisoModel> list = permisoService.listPermisoModel();
+		mov.addObject("listPermisos", list);
+		return mov;
 	}
 }

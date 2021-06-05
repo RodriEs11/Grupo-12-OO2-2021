@@ -9,8 +9,14 @@ public class Persona {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int idPersona;
+  
+  @Column(name="nombre")
   private String nombre;
+  
+  @Column(name="apellido")
   private String apellido;
+  
+  @Column(name="dni")
   private long dni;
 
   public Persona(int idPersona, String nombre, String apellido, long dni) {

@@ -1,5 +1,6 @@
 package com.unla.grupo12.controller;
 
+
 import com.unla.grupo12.entity.PermisoPeriodo;
 import com.unla.grupo12.entity.Rodado;
 import com.unla.grupo12.helpers.ViewRouteHelper;
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.unla.grupo12.helpers.ViewRouteHelper;
+
 
 @Controller
 @RequestMapping("/rodado")
@@ -61,4 +67,13 @@ public class RodadoController {
     return ViewRouteHelper.BUSCAR_RODADO;
   }
 
+
+	@GetMapping("")
+	public String index() {
+		
+		
+		return ViewRouteHelper.RODADO_AGREGAR;
+	}
+	
 }
+

@@ -53,7 +53,6 @@ public class UsuariosController {
 		modelo.addObject("usuarios", usuarios);
 		modelo.addObject("perfiles", perfiles);
 		return modelo;
-
 	}
 	
 	/* PESTAÑA AGREGAR USUARIO A BD

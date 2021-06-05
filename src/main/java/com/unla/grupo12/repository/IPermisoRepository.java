@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 @Repository("permiso")
 public interface IPermisoRepository<T extends Permiso> extends JpaRepository<T, Serializable> {
-
+	
+	Permiso findByIdPermiso(int id);
 
 }

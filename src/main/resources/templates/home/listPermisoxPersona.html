@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Usuarios</title>
+	<title>Modern Business - Start Bootstrap Template</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
-
+					
 					<li class="nav-item">
 						<a class="nav-link" href="/lista-usuarios">Usuarios</a>
 					</li>
@@ -43,9 +43,6 @@
 						<a class="nav-link" href="/perfiles/lista-perfiles">Perfiles</a>
 					</li>
 
-					<li class="nav-item">
-						<a class="nav-link" href="/permiso/ver">Permisos</a>
-					</li>
 
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
@@ -57,76 +54,59 @@
 
 						</div>
 					</li>
-
-
-
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-
 	<!-- Page Content -->
 	<div class="container">
 
-		</br>
-		</br>
-		<h1 class="mt-4 mb-3">Usuarios
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">Personas en la BD
 			<small></small>
 		</h1>
-		<!-- Intro Content -->
 
-
-		<!-- Team Members -->
-
-
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="/">Home</a>
+			</li>
+			<li class="breadcrumb-item active">Personas</li>
+		</ol>
 		<table cellpadding="5">
 
 			<thead>
 				<tr>
-
-					<th> usuario </th>
-					<th> Apellido </th>
+					<th> Fecha del permiso</th>								
 					<th> Nombre </th>
-					<th> Email </th>
-					<th> Documento </th>
-					<th> Perfil </th>
-
+					<th> Apellido </th>	
+					<th> Dni </th>					
 				</tr>
 			</thead>
 			<tbody>
-
-				<tr th:each="usuario : ${listaUsuarios}">
-
-
-					<td> <span th:text="${usuario.usuario}" /> </td>
-					<td> <span th:text="${usuario.apellido}" /> </td>
-					<td> <span th:text="${usuario.nombre}" /> </td>
-					<td> <span th:text="${usuario.email}" /> </td>
-					<td> <span th:text="${usuario.nroDocumento}" /> </td>
-					<td th:if="${usuario.perfil != null}">
-						<span th:text="${usuario.perfil.getNombre()}"> </span>
-					</td>
-
-
-
-					<td> <a class="btn btn-primary" th:href="@{'/usuarios/editar/' + ${usuario.id}}"> Editar </a> </td>
-
-					<td> <a class="btn btn-primary" th:href="@{'/usuarios/eliminar/' + ${usuario.id}}"> Eliminar</a>
-					</td>
-
+				<tr th:each="permiso : ${permisos}">
+					<td> <span th:text="${permiso.fecha}" /></td>
+					<td> <span th:text="${permiso.pedido.nombre}" /></td>
+					<td> <span th:text="${permiso.pedido.apellido}" /></td>
+					<td> <span th:text="${permiso.pedido.dni}" /></td>
 				</tr>
-
 			</tbody>
-
+			<li class="nav-item">
+			</li>
 		</table>
-
-		<a class="btn btn-primary" th:href="@{/usuarios/agregar}"> Agregar</a> </td>
-		<a class="btn btn-primary" th:href="@{/usuarios-pdf}" target="_blank"> Generar PDF</a> </td>
-
-		<p> </p>
+		<a class="btn btn-primary" th:href="@{/lista-personas}">Volver</a>
 	</div>
+	<!-- /.container -->
 
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+		</div>
+
+
+		<!-- /.container -->
+	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
