@@ -58,7 +58,6 @@ public class PerfilServiceImpl implements IPerfilService {
 		return null;
 	}
 	
-	
 	@Override
 	public PerfilModel findByNombre(String name) {
 		Perfil resultado = perfilRepository.findByNombre(name);
@@ -111,9 +110,9 @@ public class PerfilServiceImpl implements IPerfilService {
 			document.add(para);
 			document.add(Chunk.NEWLINE);
 
-			PdfPTable table = new PdfPTable(2);
+			PdfPTable table = new PdfPTable(1);
 
-			Stream.of("Id", "Nombre").forEach(headerTitle -> {
+			Stream.of("Nombre").forEach(headerTitle -> {
 				PdfPCell header = new PdfPCell();
 				Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 				header.setBackgroundColor(BaseColor.LIGHT_GRAY);
@@ -124,11 +123,6 @@ public class PerfilServiceImpl implements IPerfilService {
 			});
 
 			for (PerfilModel perfilModel : listaPerfil) {
-				PdfPCell idCell = new PdfPCell(new Phrase(perfilModel.getId().toString()));
-				idCell.setPaddingLeft(4);
-				idCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				idCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(idCell);
 
 				PdfPCell nombreCell = new PdfPCell(new Phrase(perfilModel.getNombre()));
 				nombreCell.setPaddingLeft(4);

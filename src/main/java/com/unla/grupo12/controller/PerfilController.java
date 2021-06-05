@@ -40,7 +40,7 @@ public class PerfilController {
     return mov;
   }
 
-  @PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
+  @PreAuthorize("hasAnyAuthority('Auditoria')")
   @GetMapping(value = "/perfiles-pdf", produces = MediaType.APPLICATION_PDF_VALUE)
   public ResponseEntity<InputStreamResource> perfilReporte()
       throws IOException {

@@ -14,5 +14,6 @@ public class ViewRouteHelper {
 	public final static String PERFILES_EDITAR = "home/editarPerfil";
 	public final static String REGISTRARSE = "home/registrarse";
 	public final static String RODADO= "home/rodado";
+	public final static String BUSCAR_RODADO= "home/buscarDominio";
 	
 }

@@ -8,6 +8,6 @@ import java.util.List;
 @Repository("periodoRepository")
 public interface IPeriodoRepository extends IPermisoRepository<PermisoPeriodo> {
 
-  List<PermisoPeriodo> findByRodadoDominio(String dominio);
+  PermisoPeriodo findByRodadoDominio(String dominio);
 
 }

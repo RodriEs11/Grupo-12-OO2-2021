@@ -136,8 +136,8 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService {
 			document.add(para);
 			document.add(Chunk.NEWLINE);
 
-			PdfPTable table = new PdfPTable(9);
-			Stream.of("Id", "Nombre", "Apellido", "Documento", " Tipo Doc", "E-mail", "Usuario ", "Perfil")
+			PdfPTable table = new PdfPTable(8);
+			Stream.of("Nombre", "Apellido", "Documento", " Tipo Doc", "E-mail", "Usuario ", "Perfil")
 					.forEach(headerTitle -> {
 						PdfPCell header = new PdfPCell();
 						Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
@@ -152,12 +152,6 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService {
 					});
 
 			for (UsuarioModel usuarioModel : listaUsuario) {
-				PdfPCell idCell = new PdfPCell(new Phrase(usuarioModel.getId().toString()));
-				idCell.setPaddingLeft(4);
-				idCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-				idCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(idCell);
-
 				PdfPCell nombreCell = new PdfPCell(new Phrase(usuarioModel.getNombre()));
 				nombreCell.setPaddingLeft(4);
 				nombreCell.setVerticalAlignment(Element.ALIGN_MIDDLE);

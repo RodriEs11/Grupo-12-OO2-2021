@@ -9,5 +9,5 @@ import java.io.Serializable;
 @Repository("rodadoRepository")
 public interface IRodadoRepository extends JpaRepository<Rodado, Serializable> {
 
-
+ Rodado findByDominio(String dominio);
 }

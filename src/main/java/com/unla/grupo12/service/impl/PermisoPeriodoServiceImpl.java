@@ -25,9 +25,9 @@ public class PermisoPeriodoServiceImpl implements IPermisoPeriodoService {
 
 
   @Override
-  public List<PermisoPeriodo> permisoPorRodado(String dominio) {
+  public PermisoPeriodo permisoPorRodado(String dominio) {
 
-    List <PermisoPeriodo> permisoPeriodoList = iPeriodoRepository.findByRodadoDominio(dominio);
+    PermisoPeriodo permisoPeriodoList = iPeriodoRepository.findByRodadoDominio(dominio);
 
     return permisoPeriodoList;
   }

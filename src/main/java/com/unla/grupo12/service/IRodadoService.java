@@ -11,4 +11,6 @@ public interface IRodadoService {
 
   RodadoModel agregarRodado (RodadoModel rodadoModel);
 
+  Rodado buscar (String dominio);
+
 }
