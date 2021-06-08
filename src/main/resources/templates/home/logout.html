@@ -26,13 +26,45 @@
 
 <body>
 
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">UNLa</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+				aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Iniciar Sesion</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/registrarse">Registrarse</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/rodado">Agregar Rodado</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/persona/agregarPersona">Agregar Persona</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/permiso">Agregar Permiso</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+
 	<div class="container">
 
 
-
 		<div class="row">
-			<div class="col-lg-8 mb-4">
-				<h1 class="display-5 alert alert-info">Logout con éxito.</h1>
+			<div class="col-lg-5 mb-4" style="margin: 60px;">
+				<h2 class="display-5 alert alert-info fixed">Logout con éxito.</h2>
 				<h1 class="display-5">Login</h1>
 
 				<form th:action="@{/loginprocess}" id="contactForm" method="post">
@@ -73,4 +105,3 @@
 </body>
 
 </html>
-

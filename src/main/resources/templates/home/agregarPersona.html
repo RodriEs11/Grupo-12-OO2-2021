@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Modern Business - Start Bootstrap Template</title>
+	<title>Agregar Persona</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,111 +21,109 @@
 <body>
 
 	<!-- Navigation -->
-	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="/">Inicio</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">UNLa</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+				aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-
-
-					<li class="nav-item">
-						<a class="nav-link" href="/lista-personas">Personas</a>
-					</li>
-
-					</li>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 					<li class="nav-item">
-						 <a class="nav-link" href="/perfiles/lista-perfiles">Perfiles</a>
+						<a class="nav-link" href="/login">Iniciar Sesion</a>
 					</li>
-
-					<li class="nav-item dropdown">
-						   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							User
-						</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="/logout">Logout</a>
-
-						</div>
+					<li class="nav-item">
+						<a class="nav-link" href="/registrarse">Registrarse</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/rodado">Agregar Rodado</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="/persona/agregarPersona">Agregar Persona</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/permiso">Agregar Permiso</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
+
 	<!-- Page Content -->
-	<div class="container">
 
-		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">Agregar personas a BD
 
-		</h1>
 
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item">
-				<a href="/">Home</a>
-			</li>
-			<li class="breadcrumb-item active"></li>
-		</ol>
+	<!-- Content Row -->
 
-		<!-- Content Row -->
-
-		<!-- /.row -->
-
-		<!-- Contact Form -->
-		<!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-		<div class="row">
-			<div class="col-lg-8 mb-4">
-				<h3>Agregar una nueva persona a la base de datos</h3>
-				<h2 class="text-center">Agregar Persona</h2>
-					<form action="#" th:action="@{/persona/agregarPer}" th:object="${persona}" method="post">
-
-				<form>
-				
-				<div class="control-group form-group">
-				<div class="controls">
-					<label> Nombre </label>
-					<input type="text" th:field="*{nombre}" class="form-control" id="nombre" required data-validation-required-message="Ingrese el nombre">				
-					<p class="help-block"></p>
-				</div>
-							
-				<div class="controls">
-					<label> Apellido </label>
-					<input type="text" th:field="*{apellido}" class="form-control" id="apellido" required data-validation-required-message="Ingrese el apellido">				
-					<p class="help-block"></p>
-				</div>
-				
-				<div class="controls">
-					<label> DNI </label>
-					<input type="text" th:field="*{dni}" class="form-control" id="dni" required data-validation-required-message="Ingrese el dni">
-					<p class="help-block"></p>		
-				</div>
-				
-				<p> </p>
-				<button type="submit" class="btn btn-primary" id="sendMessageButton">Agregar</button>
-				<a class="btn btn-primary" th:href="@{/persona/permisoPersona}" target="_blank"> Ver permisos por persona</a>
-				
-				
-				</form>
-	</div>
-
-	</div>
 	<!-- /.row -->
 
-	</div>
-	<!-- /.container -->
+	<!-- Contact Form -->
+	<!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
 
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+
+	<div class="container">
+		<div class="col-12 col-md-6 col-lg-4 mx-auto mt-5">
+			<div class="card">
+
+				<h2 class="text-center">Agregar Persona</h2>
+				<form action="#" th:action="@{/persona/agregarPersona}" th:object="${persona}" method="post">
+
+					<form>
+
+						<div class="control-group form-group">
+							<div class="controls">
+								<label> Nombre </label>
+								<input type="text" th:field="*{nombre}" class="form-control" id="nombre" required
+									data-validation-required-message="Ingrese el nombre">
+								<p class="help-block"></p>
+							</div>
+
+							<div class="controls">
+								<label> Apellido </label>
+								<input type="text" th:field="*{apellido}" class="form-control" id="apellido" required
+									data-validation-required-message="Ingrese el apellido">
+								<p class="help-block"></p>
+							</div>
+
+							<div class="controls">
+								<label> DNI </label>
+								<input type="text" th:field="*{dni}" class="form-control" id="dni" required
+									data-validation-required-message="Ingrese el dni">
+								<p class="help-block"></p>
+							</div>
+
+							<div th:if="${resultado != null && mensajePersona == null}" class="alert alert-success">
+								Agregado exitosamente
+							</div>
+							<div th:if="${mensajePersona != null}" class="alert alert-danger">
+								<center>
+									<p th:text="${mensajePersona}" style="color: red;">
+									</p>
+								</center>
+								<div hidden th:if="${resultado != null}" class="alert alert-success">
+									Agregado exitosamente
+								</div>
+							</div>
+
+							<p> </p>
+							<button type="submit" class="btn btn-primary" id="sendMessageButton">Agregar</button>
+
+							<a class="btn btn-primary" th:href="@{/persona/permisoPersona}"> Ver permisos por
+								persona</a>
+
+
+					</form>
+
+			</div>
 		</div>
-		<!-- /.container -->
-	</footer>
+	</div>
+	</div>
+	</div>
+
+
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="../vendor/jquery/jquery.min.js"></script>

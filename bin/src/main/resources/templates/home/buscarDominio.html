@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Busqueda de Permiso</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Inicio</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/lista-usuarios">Usuarios</a>
+                </li>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../lista-perfiles">Perfiles</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        User
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="/logout">Logout</a>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    </br>
+    </br>
+
+    <h1 class="mt-4 mb-3">Buscar por Dominio
+
+    </h1>
+    <form action="#" th:action="@{'/permiso/buscar'}"
+          name="sentMessage" id="contactForm" method="post">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Ingrese Dominio" th:value="${resultado}"
+                   name="resultado">
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search">Buscar</i></button>
+            </div>
+        </div>
+    </form>
+</div>
+</br>
+</br>
+
+<div th:if="${mensaje != null}">
+    <center>
+        <p th:text="${mensaje}" style="color: red;">
+
+        </p>
+    </center>
+</div>
+<div class="container">
+    <div th:if="${dominio != null}">
+
+        <table cellpadding="5">
+
+            <thead>
+            <tr>
+                <center>
+                    <th>Detalles de Origen/Destino</th>
+                </center>
+            </tr>
+            <tr>
+                <th> Cod Postal</th>
+                <th> Domicilio</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr th:each="l: ${dominio.desdeHasta}">
+                <td><span th:text="${l.codigoPostal}"/></td>
+                <td><span th:text="${l.lugar}"/></td>
+
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <ul>
+            <li>Permiso otorgado a:</li>
+            <ul>
+                <li>Nombre: <span th:text="${dominio.pedido.nombre}"/></li>
+
+                <li>Apellido: <span th:text="${dominio.pedido.apellido}"/></li>
+
+                <li>Fecha: <span th:text="${dominio.fecha}"/></li>
+
+
+                <li>Vehiculo:</li>
+                <ul>
+
+                    <li>Dominio: <span th:text="${dominio.rodado.dominio}"/></li>
+
+                    <li>Tipo de vehiculo: <span th:text="${dominio.rodado.vehiculo}"/></li>
+
+                    <li>Cantidad de dias: <span th:text="${dominio.cantDias}"/></li>
+
+                    <li>Vacaciones: <span th:text="${dominio.vacaciones}"/></li>
+
+                    <ul>
+                    </ul>
+                </ul>
+            </ul>
+
+
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

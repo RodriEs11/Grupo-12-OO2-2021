@@ -1,0 +1,46 @@
+<body>
+
+	<head>
+
+		<h1>
+
+			Usuarios
+
+		</h1>
+
+
+
+	</head>
+
+
+
+	<form action="#" th:action="@{/users/}" th:object="${user}" method="post">
+		<p> Username: <input type="text" th:field="*{username}" /> </p>
+		<p> Password <input type="text" th:field="*{password}" /> </p>
+		<input type="submit" />
+	</form>
+	
+	
+	
+	<table>
+
+		<thead>
+			<tr>
+				<th> Username </th>
+				<th> Password </th>
+			</tr>
+			
+		</thead>
+		<tbody>
+
+			<tr th:each="user : ${users}">
+				<td> <span th:text="${user.username}" /> </td>
+				<td> <span th:text="${user.password}" /> </td>
+			</tr>
+
+		</tbody>
+	</table>
+
+
+	
+</body>

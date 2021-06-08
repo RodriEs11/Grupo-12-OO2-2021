@@ -1,13 +1,26 @@
 package com.unla.grupo12.controller;
 
 import com.unla.grupo12.entity.Permiso;
+import com.unla.grupo12.entity.PermisoDiario;
 import com.unla.grupo12.entity.PermisoPeriodo;
+import com.unla.grupo12.entity.Persona;
+import com.unla.grupo12.entity.Rodado;
 import com.unla.grupo12.helpers.ViewRouteHelper;
+import com.unla.grupo12.model.LugarModel;
+import com.unla.grupo12.model.PermisoDiarioModel;
 import com.unla.grupo12.model.PermisoModel;
+import com.unla.grupo12.model.PermisoPeriodoModel;
+import com.unla.grupo12.model.PersonaModel;
+import com.unla.grupo12.model.RodadoModel;
+import com.unla.grupo12.service.ILugarService;
+import com.unla.grupo12.service.IPermisoDiarioService;
 import com.unla.grupo12.service.IPermisoPeriodoService;
 import com.unla.grupo12.service.IPermisoService;
+import com.unla.grupo12.service.IPersonaService;
+import com.unla.grupo12.service.IRodadoService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +30,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +49,23 @@ public class PermisoController {
   @Autowired
   @Qualifier("permisoService")
   private IPermisoService permisoService;
+  
+  @Autowired
+  @Qualifier("permisoDiarioService")
+  private IPermisoDiarioService permisoDiarioService;
 
+  @Autowired
+  @Qualifier("personaService")
+  private IPersonaService personaService;
+  
+  @Autowired
+  @Qualifier("lugarService")
+  private ILugarService lugarService;
+  
+  @Autowired
+  @Qualifier("rodadoService")
+  private IRodadoService rodadoService;
+  
 
   @PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
   @PostMapping("/buscar")
@@ -55,17 +85,65 @@ public class PermisoController {
 
 
 
-	@PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
 	@GetMapping("")
-	public String index() {
+	public ModelAndView agregarPermiso() {
+		
+		ModelAndView mv = new ModelAndView(ViewRouteHelper.PERMISOS_AGREGAR);
 		
 		
-		return ViewRouteHelper.PERMISOS_AGREGAR;
+		
+		List<LugarModel> listaLugares = lugarService.listLugar();
+		
+		mv.addObject("permisoDiario", new PermisoDiario());
+		mv.addObject("permisoPeriodo", new PermisoPeriodo());
+		mv.addObject("persona", new Persona());
+		mv.addObject("listaLugares", listaLugares);
+		mv.addObject("rodado", new Rodado());
+
+		
+		
+		
+		return mv ;
+	}
+	
+	@GetMapping("/{tipoPermiso}")
+	public RedirectView redireccionATipoDePermiso(@PathVariable("tipoPermiso") int tipoPermiso) {
+		
+		RedirectView redirect = new RedirectView();
+		
+		if(tipoPermiso == 1) {
+			
+			redirect.setUrl("permiso/diario");
+		}else {
+			redirect.setUrl("permiso/periodo");
+		}
+		
+		return redirect;
+	}
+	
+	@PostMapping("/agregar")
+	public RedirectView agregarPermiso(@ModelAttribute("persona") PersonaModel personaModel, @ModelAttribute("permisoDiario") PermisoDiarioModel permisoDiarioModel, @ModelAttribute("permisoPeriodo") PermisoPeriodo permisoPeriodoModel) {
+		
+		RedirectView redirect = new RedirectView(ViewRouteHelper.PERMISOS_AGREGAR, false);
+		
+		
+		if(!permisoDiarioModel.getMotivo().isEmpty()) {
+			PersonaModel personaSeleccionada = personaService.findByDni(personaModel.getDni());
+			
+			permisoDiarioModel.setPedido(personaSeleccionada);
+			permisoDiarioService.agregar(permisoDiarioModel);
+		}
+		
+		
+		return redirect;
 	}
 	
 	
 	
 	
+	
+	
+	@PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
 	@GetMapping("ver")
 	public ModelAndView mostrarPermisosActivos(Model fecha) {
 		
