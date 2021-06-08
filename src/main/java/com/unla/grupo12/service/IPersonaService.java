@@ -15,6 +15,7 @@ public interface IPersonaService {
 	public PersonaModel findByIdPersona(int id);
 	
 	public PersonaModel findByDni(long dni);
+	
 
 	public List<PersonaModel> listPersonaModel();
 }

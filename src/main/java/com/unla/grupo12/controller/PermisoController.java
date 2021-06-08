@@ -1,5 +1,7 @@
 package com.unla.grupo12.controller;
 
+import com.unla.grupo12.converter.PersonaConverter;
+import com.unla.grupo12.converter.RodadoConverter;
 import com.unla.grupo12.entity.Permiso;
 import com.unla.grupo12.entity.PermisoDiario;
 import com.unla.grupo12.entity.PermisoPeriodo;
@@ -66,6 +68,19 @@ public class PermisoController {
   @Qualifier("rodadoService")
   private IRodadoService rodadoService;
   
+  @Autowired
+  @Qualifier("rodadoConverter")
+  private RodadoConverter rodadoConverter;
+  
+  
+  @Autowired
+  @Qualifier("personaConverter")
+  private PersonaConverter personaConverter;
+  
+  
+  
+
+  
 
   @PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
   @PostMapping("/buscar")
@@ -106,6 +121,37 @@ public class PermisoController {
 		return mv ;
 	}
 	
+	@GetMapping("/diario")
+	public ModelAndView agregarPermisoDiario(){
+		
+		
+		ModelAndView mv = new ModelAndView("home/agregarPermisoDiario");
+		
+		List<LugarModel> listaLugares = lugarService.listLugar();
+		mv.addObject("listaLugares", listaLugares);
+		mv.addObject("permisoDiario", new PermisoDiario());
+		mv.addObject("persona", new Persona());
+		
+		return mv;
+		
+	}
+	
+	@GetMapping("/periodo")
+	public ModelAndView agregarPermisoPeriodo(){
+		
+		
+		ModelAndView mv = new ModelAndView("home/agregarPermisoPeriodo");
+		
+		List<LugarModel> listaLugares = lugarService.listLugar();
+		mv.addObject("listaLugares", listaLugares);
+		mv.addObject("permisoPeriodo", new PermisoPeriodo());
+		mv.addObject("persona", new Persona());
+		mv.addObject("rodado", new Rodado());
+		
+		return mv;
+		
+	}
+	
 	@GetMapping("/{tipoPermiso}")
 	public RedirectView redireccionATipoDePermiso(@PathVariable("tipoPermiso") int tipoPermiso) {
 		
@@ -121,25 +167,41 @@ public class PermisoController {
 		return redirect;
 	}
 	
-	@PostMapping("/agregar")
-	public RedirectView agregarPermiso(@ModelAttribute("persona") PersonaModel personaModel, @ModelAttribute("permisoDiario") PermisoDiarioModel permisoDiarioModel, @ModelAttribute("permisoPeriodo") PermisoPeriodo permisoPeriodoModel) {
+	@PostMapping("/agregarDiario")
+	public RedirectView agregarPermisoDiario(@ModelAttribute("persona") PersonaModel personaModel, @ModelAttribute("permisoDiario") PermisoDiarioModel permisoDiarioModel) {
 		
 		RedirectView redirect = new RedirectView(ViewRouteHelper.PERMISOS_AGREGAR, false);
 		
 		
-		if(!permisoDiarioModel.getMotivo().isEmpty()) {
-			PersonaModel personaSeleccionada = personaService.findByDni(personaModel.getDni());
-			
-			permisoDiarioModel.setPedido(personaSeleccionada);
-			permisoDiarioService.agregar(permisoDiarioModel);
-		}
+	
+		PersonaModel personaSeleccionada = personaService.findByDni(personaModel.getDni());
+
+		permisoDiarioModel.setPedido(personaSeleccionada);
+		permisoDiarioService.agregar(permisoDiarioModel);
+		
 		
 		
 		return redirect;
 	}
 	
 	
+	@PostMapping("/agregarPeriodo")
+	public RedirectView agregarPermisoPeriodo(@ModelAttribute("persona") PersonaModel personaModel, @ModelAttribute("permisoDiario") PermisoPeriodoModel permisoPeriodoModel, @ModelAttribute("rodado") RodadoModel rodadoModel ) {
+		
+		RedirectView redirect = new RedirectView(ViewRouteHelper.PERMISOS_AGREGAR, false);
+		
+		Rodado rodadoSeleccionado = rodadoService.buscar(rodadoModel.getDominio());
 	
+		PersonaModel personaSeleccionada = personaService.findByDni(personaModel.getDni());
+
+		permisoPeriodoModel.setRodado(rodadoConverter.entityToModel(rodadoSeleccionado));
+		permisoPeriodoModel.setPedido(personaSeleccionada);
+		permisoPeriodoService.agregar(permisoPeriodoModel);
+		
+		
+		
+		return redirect;
+	}
 	
 	
 	
