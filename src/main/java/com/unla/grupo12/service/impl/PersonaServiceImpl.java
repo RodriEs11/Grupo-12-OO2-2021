@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.unla.grupo12.converter.PersonaConverter;
 import com.unla.grupo12.entity.Persona;
+import com.unla.grupo12.entity.Rodado;
 import com.unla.grupo12.model.PersonaModel;
 import com.unla.grupo12.repository.IPersonaRepository;
 import com.unla.grupo12.service.IPersonaService;
@@ -53,6 +54,13 @@ public class PersonaServiceImpl implements IPersonaService{
 	public PersonaModel findByDni(long dni) {
 		Persona persona = personaRepository.findByDni(dni);
 		return personaConverter.entityToModel(persona);
+	}
+	
+
+	@Override
+	public Persona buscar(long dni) {
+		Persona personaResultado = personaRepository.findByDni(dni);
+		return personaResultado;
 	}
 	
 }

@@ -98,7 +98,7 @@
 
 							<div class="controls">
 								<label> Fecha </label>
-								<input type="date" class="form-control" required
+								<input th:field="${permisoDiario.fecha}" type="date" class="form-control" required
 									data-validation-required-message="Ingrese la fecha">
 								<p> </p>
 							</div>
@@ -152,6 +152,7 @@
 
 
 							<p> </p>
+							<a class="btn btn-primary" th:href="@{/permiso}"> Volver </a></td>
 							<button  type="submit" class="btn btn-primary" id="sendMessageButton">Agregar</button>
 
 

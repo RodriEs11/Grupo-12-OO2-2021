@@ -8,6 +8,6 @@ import com.unla.grupo12.model.LugarModel;
 public interface ILugarService {
 
 	List<LugarModel> listLugar();
-	
+	public LugarModel findById(int id);
 
 }

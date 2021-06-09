@@ -2,6 +2,9 @@ package com.unla.grupo12.entity;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.unla.grupo12.model.LugarModel;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,11 +19,16 @@ public class Permiso implements java.io.Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   protected int idPermiso;
+  
+  
   @ManyToOne
   @LazyCollection(LazyCollectionOption.FALSE)
   @JoinColumn(name = "persona_id")
   protected Persona pedido;
+  
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   protected LocalDate fecha;
+  
   @ManyToMany
   @LazyCollection(LazyCollectionOption.FALSE)
   @JoinColumn(name = "lugar_id")
@@ -69,6 +77,8 @@ public class Permiso implements java.io.Serializable{
   public Set<Lugar> getDesdeHasta() {
     return desdeHasta;
   }
+  
+ 
 
   public void setDesdeHasta(Set<Lugar> desdeHasta) {
     this.desdeHasta = desdeHasta;

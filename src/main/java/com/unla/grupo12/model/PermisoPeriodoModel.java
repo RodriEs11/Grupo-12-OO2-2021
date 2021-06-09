@@ -1,19 +1,27 @@
 package com.unla.grupo12.model;
 
+import java.time.LocalDate;
+import java.util.Set;
+
+import com.unla.grupo12.entity.Lugar;
+
 public class PermisoPeriodoModel extends PermisoModel {
 
   private int cantDias;
   private boolean vacaciones;
   private RodadoModel rodado;
 
-  public PermisoPeriodoModel(int cantDias, boolean vacaciones, RodadoModel rodado) {
-    this.cantDias = cantDias;
-    this.vacaciones = vacaciones;
-    this.rodado = rodado;
-  }
+  
+  public PermisoPeriodoModel(int idPermiso, PersonaModel pedido, LocalDate fecha, int cantDias, boolean vacaciones, RodadoModel rodado) {
+	  	super(idPermiso, pedido, fecha );
+	    this.cantDias = cantDias;
+	    this.vacaciones = vacaciones;
+	    this.rodado = rodado;
+	  }
 
-  public PermisoPeriodoModel() {
-  }
+  public PermisoPeriodoModel() {}
+ 
+  
 
   public int getCantDias() {
     return cantDias;

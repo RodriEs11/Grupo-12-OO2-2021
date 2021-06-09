@@ -91,7 +91,7 @@
 
 							<div class="controls">
 								<label> Ingrese el dni de la persona </label>
-								<input th:field="${persona.dni}" type="text" class="form-control" required
+								<input th:field="${persona.dni}"type="text" class="form-control" required
 									data-validation-required-message="Ingrese el dni">
 								<p> </p>
 							</div>
@@ -162,6 +162,7 @@
 
 
 							<p> </p>
+							<a class="btn btn-primary" th:href="@{/permiso}"> Volver </a></td>
 							<button type="submit" class="btn btn-primary" id="sendMessageButton">Agregar</button>
 
 

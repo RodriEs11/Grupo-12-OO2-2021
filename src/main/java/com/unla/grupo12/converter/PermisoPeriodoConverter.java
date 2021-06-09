@@ -7,12 +7,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Component("permisoPeriodoConverter")
 public class PermisoPeriodoConverter {
 
   @Autowired
   private RodadoConverter rodadoConverter;
+  
+  @Autowired
+  private PersonaConverter personaConverter;
+  
+
 
   public List<PermisoPeriodoModel> listPermisoPeriodoModel(List<PermisoPeriodo> listPermisoPeriodo) {
 
@@ -49,8 +55,8 @@ public class PermisoPeriodoConverter {
   }
 
   public PermisoPeriodoModel entityToModel(PermisoPeriodo permisoPeriodo) {
-
-    return new PermisoPeriodoModel(permisoPeriodo.getCantDias(), permisoPeriodo.isVacaciones(),
-        rodadoConverter.entityToModel(permisoPeriodo.getRodado()));
+	  
+	
+    return new PermisoPeriodoModel(permisoPeriodo.getIdPermiso(), personaConverter.entityToModel(permisoPeriodo.getPedido()), permisoPeriodo.getFecha(), permisoPeriodo.getCantDias(), permisoPeriodo.isVacaciones(), rodadoConverter.entityToModel(permisoPeriodo.getRodado()) );
   }
 }

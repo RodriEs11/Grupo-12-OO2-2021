@@ -33,7 +33,7 @@
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link " href="/login">Iniciar Sesión</a>
+						<a class="nav-link " href="/login">Iniciar Sesion</a>
 					</li>
 
 					<li class="nav-item">
@@ -52,7 +52,7 @@
 						<ul class="navbar-nav ml-auto">
 
 							<li class="nav-item">
-								<a class="nav-link" href="/persona">Agregar Persona</a>
+								<a class="nav-link" href="/persona/agregarPersona">Agregar Persona</a>
 							</li>
 
 					</div>
@@ -84,110 +84,12 @@
 				<div class="card-body">
 					<h2 class="text-center">Agregar Permiso</h2>
 
-					<form action="#" th:action="@{/permiso/agregar}" method="POST">
-
-						<div class="control-group form-group">
-
-
-							<div class="controls">
-								<label> Ingrese el dni de la persona </label>
-								<input type="text" th:field="${persona.dni}" class="form-control" required
-									data-validation-required-message="Ingrese el dni">
-								<p> </p>
-							</div>
-
-							<div class="controls">
-								<label> Fecha </label>
-								<input type="date" class="form-control" required
-									data-validation-required-message="Ingrese la fecha">
-								<p> </p>
-							</div>
-
-
-							<div class="controls">
-								<label> Desde: </label>
-
-								<select>
-
-									<tr th:each="listaLugares: ${listaLugares}">
-
-										<option th:value="${listaLugares.idLugar}"> <span
-												th:text="${listaLugares.lugar}"> </span> </option>
-
-
-								</select>
-
-								<p> </p>
-							</div>
-
-
-							<div class="controls">
-								<label> Hasta: </label>
-
-								<select>
-
-									<tr th:each="listaLugares: ${listaLugares}">
-
-										<option th:value="${listaLugares.idLugar}"> <span
-												th:text="${listaLugares.lugar}"> </span> </option>
-
-
-								</select>
-
-							</div>
-
-
-							<div class="control-group from group">
-								<div class="controls">
-									<p> </p>
-									<label> Tipo de permiso &nbsp&nbsp</label>
-
-
-									<select id="redirect" name="redirect" onchange="mostrarFormulario();">
-
-										<option value="1"> Diario </option>
-										<option value="2"> Periodo </option>
-
-									</select>
-								</div>
-							</div>
-
-							<div id="permisoDiario">
-								<div class="controls" name="permisoDiario">
-									<label> Motivo </label>
-									<input th:field="${permisoDiario.motivo}" type="text" class="form-control" required
-										data-validation-required-message="Ingrese el motivo">
-									<p> </p>
-								</div>
-							</div>
-
-							<div id="permisoPeriodo" style="display: none;">
-
-								<div class="controls">
-									<label> Cantidad de dias: </label>
-									<input type="number" class="form-control">
-									<p> </p>
-								</div>
-
-								<div class="controls">
-									<label> ¿Por Vacaciones? </label>
-									<input type="checkbox">
-									<p> </p>
-								</div>
-								
-								<div class="controls">
-									<label> Ingrese el dominio de su rodado </label>
-									<input th:field="${rodado.dominio}" type="text">
-									<p> </p>
-								</div>
-							</div>
-
-
+					
 							<p> </p>
-							<button  type="submit" class="btn btn-primary" id="sendMessageButton">Agregar</button>
-
-
-					</form>
+							
+							<a class="btn btn-primary" th:href="@{permiso/diario}"> Diario </a></td>
+							<a class="btn btn-primary" th:href="@{permiso/periodo}"> Periodo </a></td>
+							
 
 
 				</div>

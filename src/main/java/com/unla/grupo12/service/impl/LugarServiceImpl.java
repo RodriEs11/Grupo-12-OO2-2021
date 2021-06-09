@@ -34,6 +34,13 @@ public class LugarServiceImpl implements ILugarService{
 		return lugarList;
 	}
 
+	@Override
+	public LugarModel findById(int id) {
+		Lugar lugar = lugarRepository.findByIdLugar(id);
+		
+		return lugarConverter.entityToModel(lugar);
+	}
+
 	
 
 	

@@ -12,13 +12,16 @@ public class PermisoDiario extends Permiso {
 
   private String motivo;
 
+  
+  public PermisoDiario() {
+  }
+  
   public PermisoDiario(int idPermiso, Persona pedido, LocalDate fecha, Set<Lugar> desdeHasta, String motivo) {
     super(idPermiso, pedido, fecha, desdeHasta);
     this.motivo = motivo;
   }
 
-  public PermisoDiario() {
-  }
+  
 
   public PermisoDiario(String motivo) {
     this.motivo = motivo;

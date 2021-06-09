@@ -3,11 +3,16 @@ package com.unla.grupo12.model;
 import java.time.LocalDate;
 import java.util.Set;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PermisoModel {
 
   protected int idPermiso;
   protected PersonaModel pedido;
+  
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   protected LocalDate fecha;
+  
   protected Set<LugarModel> desdeHasta;
 
   public PermisoModel(int idPermiso, PersonaModel pedido, LocalDate fecha, Set<LugarModel> desdeHasta) {
@@ -16,6 +21,14 @@ public class PermisoModel {
     this.fecha = fecha;
     this.desdeHasta = desdeHasta;
   }
+  
+  public PermisoModel(int idPermiso, PersonaModel pedido, LocalDate fecha) {
+	    this.idPermiso = idPermiso;
+	    this.pedido = pedido;
+	    this.fecha = fecha;
+	    
+	  }
+
 
   public PermisoModel() {
   }

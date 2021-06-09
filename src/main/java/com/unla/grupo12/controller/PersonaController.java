@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,6 +86,31 @@ public class PersonaController {
 		List<Permiso> lista = permisoService.traerPermisoxDni(personaModel.getDni());
 		model.addObject("permisos", lista);
 		return model;
+	}
+	
+	
+	
+	@GetMapping("generarUrl/{id}")
+	public RedirectView generarUrlPersona(@PathVariable("id") int id) {
+
+		RedirectView redirect = new RedirectView();
+		
+		PersonaModel persona = personaService.findByIdPersona(id);
+		
+		String nombre = persona.getNombre();
+		String apellido = persona.getApellido();
+		long dni = persona.getDni();
+		
+		
+		String url = "https://rodries11.github.io/grupo-12-OO2-2021/" + "?nombre=" + nombre + " " + apellido + "&dni=" + dni ;
+		
+		
+		
+		
+		redirect.setUrl(url);
+		
+		return redirect;
+
 	}
 
 }

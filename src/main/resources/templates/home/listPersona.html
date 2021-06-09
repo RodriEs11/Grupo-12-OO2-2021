@@ -75,17 +75,14 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 		<div style="margin: 50px;">
-			<h1 class="mt-4 mb-3">Personas en la BD
+			<h1 class="mt-4 mb-3">
 				<small></small>
 			</h1>
 
 		</div>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item">
-				<a href="/">Home</a>
-			</li>
-			<li class="breadcrumb-item active">Personas</li>
-		</ol>
+		
+		<h1> Personas en la BD</h1>
+		
 		<table cellpadding="5">
 
 			<thead>
@@ -102,6 +99,7 @@
 					<td> <span th:text="${persona.nombre}" /> </td>
 					<td> <span th:text="${persona.apellido}" /> </td>
 					<td> <span th:text="${persona.dni}" /> </td>
+					<td> <a class="btn btn-primary" th:href="@{'persona/generarUrl/' + ${persona.idPersona}}"> URL </a> </td>
 				</tr>
 
 			</tbody>
