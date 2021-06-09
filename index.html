@@ -1,23 +1,179 @@
-<html>
-    <body onload="cargarDatosPersona();">
+<!DOCTYPE html>
+<html lang="en">
 
-        <h1> GH-PAGES  </h1>
-       
+<head>
 
-        <div>
-            
-            <span> Nombre: </span>
-            <span  id="nombre"> </span>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-            <span> Apellido: </span>
-            <span  id="apellido"> </span>
+  <title>Permiso</title>
 
-        </div>
-        
-        
-    </body>
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <script src="js/validar.js"> </script>
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body onload="cargarDatosRodado();cargarDatosLugar(); cargarDatosPermiso(); cargarDatosPersona();">
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Permiso</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+      
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+     
+    </h1>
+
+
+    <!-- Intro Content -->
+    <div class="row">
+
+      <h1 id="nombreCompleto">
+        Nombre Apellido
+
+      </h1>
+
+     
+    </div>
+
+    
+    <div class="row">
+      <p> DNI:</p>
+      <p id="dni"> </p>
+
+      <br> </br>
+      <span id="dni"></span>
+      
+
+     
+    </div> 
+
+    <div class="row">
+
+      <h1 id="permiso">
+        Lugar
+
+      </h1>
+
+    </div>
+
+    
+    <div class="row">
+      <p> Desde:</p>
+      <p> </p>
+
+      <br> </br>
+      <span id="desde"></span>
+      
+    </div> 
+
+    <div class="row">
+      <p> Hasta:</p>
+      <p > </p>
+
+      <br> </br>
+      <span id="hasta"></span>
+      
+    </div> 
+
+    
+    <div class="row">
+      <p> Tipo de permiso:</p>
+      <p > </p>
+
+      <br> </br>
+      <span id="tipoDePermiso"></span>
+      
+    </div>
+
+    <div id="motivo" class="row" style="display: none;">
+      <span>Motivo:</span>
+     
+      <span id="motivoText"></span>
+      
+      
+      
+    </div>
+
+    <div id="cantidadDeDias" class="row" style="display: none;">
+      <span>Cantidad de Dias:</span>
+     
+      <span id="dias"></span>
+      
+      
+      
+    </div>
+
+    <div id="isVacaciones" class="row" style="display: none;">
+      <span>¿Es por vacaciones?:</span>
+     
+      <span id="vacaciones"></span>
+      
+      
+      
+    </div>
+
+
+    <div class="row">
+
+      <h1 id="rodado">
+        Rodado
+
+      </h1>
+
+
+     
+    </div>
+
+    <div class="row">
+      <p> Dominio:</p>
+      <p> </p>
+
+      <br> </br>
+      <span id="dominio"></span>
+      
+    </div> 
+
+    <div class="row">
+      <p> Vehiculo:</p>
+      <p> </p>
+
+      <br> </br>
+      <span id="vehiculo"></span>
+      
+    </div> 
+    
+
+    <!-- /.row -->
+
+   
+    <button onclick="cargarDatosPersona(); cargarDatosLugar();" ></button>
+  
+
+
+  <!-- Bootstrap core JavaScript -->
+
+  <script src="js/cargarDatosUrl.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
 
 </html>
-
