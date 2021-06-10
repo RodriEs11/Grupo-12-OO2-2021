@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Modern Business - Start Bootstrap Template</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="../../css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/">Inicio</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+
+
+					
+					<li class="nav-item">
+						<a class="nav-link" href="/lista-usuarios">Usuarios</a>
+					</li>
+
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/perfiles/lista-perfiles">Perfiles</a>
+					</li>
+
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							User
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+							<a class="dropdown-item" href="/logout">Logout</a>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">Editar Usuario
+
+		</h1>
+
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="/">Home</a>
+			</li>
+			<li class="breadcrumb-item active">Editar Usuario</li>
+		</ol>
+
+		<!-- Content Row -->
+
+		<!-- /.row -->
+
+		<!-- Contact Form -->
+		<!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+		<div class="row">
+			<div class="col-lg-8 mb-4">
+				<h3>Editar usuario</h3>
+
+				<form action="#" th:action="@{'/usuarios/actualizar/' + ${usuario.id}} " th:object="${usuario}"
+					name="sentMessage" id="contactForm" method="post">
+
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Apellido</label>
+
+							<input type="text" th:value="*{apellido}" th:field="*{apellido}" class="form-control"
+								id="apellido" required data-validation-required-message="Ingrese el apellido">
+							<p class="help-block"></p>
+						</div>
+					</div>
+
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Nombre</label>
+							<input type="text" th:value="*{nombre}" th:field="*{nombre}" class="form-control"
+								id="nombre" required data-validation-required-message="Ingrese el nombre">
+							<p class="help-block"></p>
+						</div>
+					</div>
+
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Dni</label>
+							<input type="text" th:value="*{nroDocumento}" th:field="*{nroDocumento}"
+								class="form-control" id="documento" required
+								data-validation-required-message="Ingrese el DNI">
+							<p class="help-block"></p>
+						</div>
+					</div>
+
+
+
+
+					<div class="control-group from group">
+						<div class="controls">
+							<label> Tipo de Documento &nbsp&nbsp</label>
+							<select th:field="*{tipoDocumento}">
+
+								<option th:value="1"> DNI </option>
+								<option th:value="2"> LC </option>
+								<option th:value="3"> LE </option>
+								<option th:value="4"> CI </option>
+
+							</select>
+						</div>
+					</div>
+
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Email</label>
+							<input type="email" th:value="*{email}" th:field="*{email}" class="form-control" id="email"
+								required data-validation-required-message="Ingrese el email">
+							<p class="help-block"></p>
+						</div>
+					</div>
+
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Nombre de usuario</label>
+							<input type="text" th:value="*{usuario}" th:field="*{usuario}" class="form-control"
+								id="usuario" required data-validation-required-message="Ingrese el nombre de usuario">
+							<p class="help-block"></p>
+						</div>
+					</div>
+
+
+					<div class="control-group from group">
+						<div class="controls">
+							<label> Tipo de Perfil &nbsp&nbsp</label>
+							<select th:field="*{perfil.id}">
+
+								<tr th:each="perfil: ${perfiles}">
+
+									<option th:value="${perfil.id}"> <span th:text="${perfil.nombre}"></option>
+
+								</tr>
+
+
+
+							</select>
+							
+							<div class="control-group form-group">
+						<div class="controls">
+							<label>Contraseña:</label>
+
+							<input type="password" th:field="*{clave}" class="form-control" id="password" required
+								data-validation-required-message="Ingresa una contraseña">
+						</div>
+					</div>
+							
+						</div>
+					</div>
+
+
+					<p> </p>
+					<div id="success"></div>
+					<!-- For success/fail messages -->
+					<button type="submit" class="btn btn-primary" id="sendMessageButton">Editar</button>
+				</form>
+			</div>
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

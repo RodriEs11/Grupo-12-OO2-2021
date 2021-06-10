@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Modern Business - Start Bootstrap Template</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="css/modern-business.css" rel="stylesheet">
+
+</head>
+<!-- Page Content -->
+
+
+<body>
+
+	<div class="container">
+
+
+
+		<div class="row">
+			<div class="col-lg-8 mb-4">
+				<h1 class="display-5 alert alert-info">Logout con éxito.</h1>
+				<h1 class="display-5">Login</h1>
+
+				<form th:action="@{/loginprocess}" id="contactForm" method="post">
+
+					<div class="control-group form-group">
+						<div class="controls">
+
+							<label>Username</label>
+							<input type="text" class="form-control" name="username" id="username" placeholder="Username"
+								required data-validation-required-message="Ingresa tu usuario" />
+							<p class="help-block"></p>
+						</div>
+					</div>
+
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Password</label>
+							<input type="password" class="form-control" name="password" id="password"
+								placeholder="Password" />
+							<p> </p>
+							<button type="submit" class="btn btn-primary" id="sendlogin">Login </button>
+						</div>
+					</div>
+
+				</form>
+				<div th:if="${error != null}" class="alert alert-danger">
+					Usuario o password incorrecta.
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Grupo 12 OO2 2021</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

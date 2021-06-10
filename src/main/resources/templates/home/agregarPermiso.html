@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Modern Business - Start Bootstrap Template</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="css/modern-business.css" rel="stylesheet">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">UNLa</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+				aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link " href="/login">Iniciar Sesión</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link " aria-current="page" href="/registrarse">Registrarse</a>
+					</li>
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+
+							<li class="nav-item">
+								<a class="nav-link" href="/persona">Agregar Persona</a>
+							</li>
+
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+
+							<li class="nav-item">
+								<a class="nav-link active" href="/permiso">Agregar Permiso</a>
+							</li>
+
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+
+							<li class="nav-item">
+								<a class="nav-link" href="/rodado">Agregar Rodado</a>
+							</li>
+
+					</div>
+
+				</ul>
+
+
+				<span class="navbar-text">
+					Objetos II - 2021
+				</span>
+			</div>
+
+
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="col-12 col-md-6 col-lg-4 mx-auto mt-5">
+			<div class="card">
+
+				<div class="card-body">
+					<h2 class="text-center">Agregar Permiso</h2>
+
+					<form action="#" th:action="@{/permiso/agregarpermisodiario}" th:object="${permiso}" name="sentMessage" id="contactForm"
+					method="post">
+
+						<div class="control-group form-group">
+
+
+							<div class="control-group from group">
+								<div class="controls">
+									<p> </p>
+									<label> Persona &nbsp&nbsp</label>
+									<select>
+
+										<option value="1"> Persona1 </option>
+										<option value="2"> Persona2 </option>
+										<option value="3"> Persona3 </option>
+										<option value="4"> Persona4 </option>
+
+									</select>
+								</div>
+							</div>
+
+							<div class="controls">
+								<label> Fecha </label>
+								<input type="date" class="form-control" required
+									data-validation-required-message="Ingrese la fecha">
+								<p> </p>
+							</div>
+
+
+							<div class="controls">
+								<label> Desde: </label>
+
+								<select>
+
+									<option value="1"> Lugar1 </option>
+									<option value="2"> Lugar2 </option>
+									<option value="3"> Lugar3 </option>
+									<option value="4"> Lugar4 </option>
+
+								</select>
+
+								<p> </p>
+							</div>
+
+
+							<div class="controls">
+								<label> Hasta: </label>
+
+								<select>
+
+									<option value="1"> Lugar1 </option>
+									<option value="2"> Lugar2 </option>
+									<option value="3"> Lugar3 </option>
+									<option value="4"> Lugar4 </option>
+
+								</select>
+
+							</div>
+
+
+							<div class="control-group from group">
+								<div class="controls">
+									<p> </p>
+									<label> Tipo de permiso &nbsp&nbsp</label>
+									<select>
+
+										<option value="1"> Diario </option>
+										<option value="2"> Periodo </option>
+
+
+									</select>
+								</div>
+							</div>
+
+							<div class="controls">
+								<label> Si es Diario, motivo: </label>
+								<input type="text" class="form-control" required
+									data-validation-required-message="Ingrese el motivo">
+								<p> </p>
+							</div>
+
+
+							<div class="controls">
+								<label> Si es Periodo: </label>
+
+								<input type="number" class="form-control" placeholder="Cantidad de dias" required
+									data-validation-required-message="Ingrese la cantidad de dias">
+								<p> </p>
+
+								<label> ¿Es por vacaciones? <input type="checkbox" /> </label>
+
+								<p> </p>
+							</div>
+
+
+
+							<div class="controls">
+								<label> Seleccione el rodado: </label>
+
+								<select>
+
+									<option value="1"> Rodado1 </option>
+									<option value="2"> Rodado2 </option>
+									<option value="3"> Rodado3 </option>
+									<option value="4"> Rodado4 </option>
+
+								</select>
+
+							</div>
+							<p> </p>
+							<button type="submit" class="btn btn-primary" id="sendMessageButton">Agregar</button>
+
+
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="container">
+			<div class="col-12 text-center">
+				<p>UNLa - Objetos II - 2021</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

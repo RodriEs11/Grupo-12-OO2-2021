@@ -1,0 +1,93 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>formulario</title>
+</head>
+<body>
+<link href="/css/form.css" rel="stylesheet" />
+<header>
+	<h1>formulario</h1>
+</header>
+
+<div id="form">
+
+<div class="fish" id="fish"></div>
+<div class="fish" id="fish2"></div>
+
+<form id="waterform" th:action="@{/permiso/prueba2}" th:object="${permiso}" method="post">
+
+	<!--
+			
+			<div class="formgroup" id="email-form">
+			    <label for="email">motivo</label>
+			    <input type ="text" placeholder="motivo" th:field="*{motivo}" th:value="${motivo}"/>
+			</div>
+			
+			 <label >persona</label>
+			 
+			 <div class="control-group from group">
+						<div class="controls">
+							<label> persona &nbsp&nbsp</label>
+						</div>
+
+			</div>
+				<select th:field="*{pedido.id}">
+
+						<tr th:each="pedido: ${personas}">
+
+							<option th:value="${pedido.id}"> <span th:text="${pedido.nombre}"></option>
+
+						</tr>
+
+
+					</select>
+			-->		
+			<div class="custom-control custom-radio">	
+				<tr th:each="persona: ${personas}">			
+					<input type="radio" th:field="*{pedido.id}" th:value="${persona.id}><span th:text="${pedido.nombre}"></input>
+				</tr>			
+			</div>
+				<p></p>
+			<label> Lugar Origen &nbsp&nbsp</label>
+
+					<div class="control-group from group">
+						<div class="controls">
+							<label> lugar &nbsp&nbsp</label>
+						</div>
+
+				</div>
+					<select th:field="*{desdeHasta[1].id}">
+
+						<tr th:each="lugar: ${lugares}">
+
+							<option th:value="${lugar.id}"> <span th:text="${lugar.lugar}"></option>
+
+						</tr>
+					</select>
+						<div class="control-group from group">
+						<div class="controls">
+							<label> lugar2 &nbsp&nbsp</label>
+						</div>
+
+				</div>
+				<label> Lugar Destino &nbsp&nbsp</label>
+
+					<select th:field="*{desdeHasta[2].id}">
+
+						<tr th:each="lugar: ${lugares}">
+
+							<option th:value="${lugar.id}"> <span th:text="${lugar.lugar}"></option>
+
+						</tr>
+
+
+					</select>
+			
+				<input type="submit" value="enviar" />
+</form>
+			
+</div>
+ <script src="/js/form.js"></script>
+</body>
+</html>

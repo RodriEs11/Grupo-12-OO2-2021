@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.card-img-top {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.header-img {
+  height: 100px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.header-img img {
+  height: 100px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+footer {
+  background-color: #212529;
+  color: white;
+  padding: 3rem 0;
+  margin-top: 1.5rem;
+}
