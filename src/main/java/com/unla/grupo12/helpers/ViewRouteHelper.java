@@ -28,7 +28,10 @@ public class ViewRouteHelper {
 	public final static String PERMISOS_INDEX = "home/permisos";
 	
 	public final static String RODADO_AGREGAR = "home/agregarRodado";
-	
-	
-	
+
+	public final static String QR = "home/qr";
+
+
+
+
 }
