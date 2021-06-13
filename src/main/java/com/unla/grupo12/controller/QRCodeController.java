@@ -32,11 +32,11 @@ public class QRCodeController {
 
 
   //@GetMapping(value = "/generateAndDownloadQRCode/{id}")
-  @GetMapping("/generateAndDownloadQRCode/{id}")
-  public RedirectView download2(@PathVariable("id") int id, RedirectAttributes atribute) throws Exception{
-    RedirectView redirect = new RedirectView("/lista-personas");
+  @PostMapping("/generateAndDownloadQRCode")
+  public RedirectView download2(@ModelAttribute("persona") PersonaModel p, RedirectAttributes atribute) throws Exception{
+    RedirectView redirect = new RedirectView("/verQr");
 
-    String url = this.generarUrlPersona(id);
+    String url = this.generarUrlPersona(p.getDni());
     int width = 350;
     int height = 350;
     LocalTime hora= LocalTime.now();

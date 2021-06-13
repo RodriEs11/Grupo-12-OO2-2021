@@ -121,4 +121,13 @@ public class HomeController {
 		mov.addObject("listPermisos", list);
 		return mov;
 	}
+
+	@GetMapping("/verQr")
+	public ModelAndView verQR(@RequestParam(name = "qr", required = false) String qr) {
+		ModelAndView mov = new ModelAndView(ViewRouteHelper.QR);
+
+		mov.addObject("qr", qr);
+
+		return mov;
+	}
 }
