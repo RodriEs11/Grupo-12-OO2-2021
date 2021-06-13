@@ -122,7 +122,7 @@ public class HomeController {
 		return mov;
 	}
 
-	@GetMapping("/verQr")
+	@GetMapping("/verqr")
 	public ModelAndView verQR(@RequestParam(name = "qr", required = false) String qr) {
 		ModelAndView mov = new ModelAndView(ViewRouteHelper.QR);
 

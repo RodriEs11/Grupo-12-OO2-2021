@@ -31,6 +31,8 @@ public class ViewRouteHelper {
 
 	public final static String QR = "home/qr";
 
+	public static final String PEDIR_DNI_QR = "home/pedirDniQR";
+
 
 
 

@@ -2,6 +2,9 @@ package com.unla.grupo12.controller;
 
 
 
+import com.unla.grupo12.entity.Persona;
+import com.unla.grupo12.helpers.ViewRouteHelper;
+import com.unla.grupo12.model.PermisoDiarioModel;
 import com.unla.grupo12.model.PersonaModel;
 import com.unla.grupo12.service.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.unla.grupo12.service.impl.QRCodeGenerator;
+
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -32,9 +37,10 @@ public class QRCodeController {
 
 
   //@GetMapping(value = "/generateAndDownloadQRCode/{id}")
+  //(@ModelAttribute("permiso") PermisoDiarioModel permisoDiarioModel) {
   @PostMapping("/generateAndDownloadQRCode")
   public RedirectView download2(@ModelAttribute("persona") PersonaModel p, RedirectAttributes atribute) throws Exception{
-    RedirectView redirect = new RedirectView("/verQr");
+    RedirectView redirect = new RedirectView("/verqr");
 
     String url = this.generarUrlPersona(p.getDni());
     int width = 350;
@@ -62,18 +68,29 @@ public class QRCodeController {
     return ResponseEntity.status(HttpStatus.OK).body(QRCodeGenerator.getQRCodeImage(codeText, width, height));
   }
 
-  public String generarUrlPersona( int id) {
+  public String generarUrlPersona( long dni) {
 
-    PersonaModel persona = personaService.findByIdPersona(id);
+    PersonaModel persona = personaService.findByDni(dni);
 
     String nombre = persona.getNombre();
     String apellido = persona.getApellido();
-    long dni = persona.getDni();
+    //long dni = persona.getDni();
 
     String url = "https://rodries11.github.io/grupo-12-OO2-2021/" + "?nombre=" + nombre + "&apellido=" + apellido + "&dni=" + dni ;
 
     return url;
 
   }
+
+  //**********
+  @GetMapping("/pedirDniQR")
+  public ModelAndView pedirDniQr() {
+    ModelAndView model = new ModelAndView(ViewRouteHelper.PEDIR_DNI_QR);
+
+    model.addObject("persona", new Persona());
+    return model;
+  }
+
+
 
 }
