@@ -1,4 +1,4 @@
-package com.unla.grupo12.service.impl;
+package com.unla.grupo12.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

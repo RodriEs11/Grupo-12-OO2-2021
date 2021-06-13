@@ -34,6 +34,10 @@
 
 
 					<li class="nav-item">
+						<a class="nav-link" href="/rodado/buscar">Buscar Permiso por dominio</a>
+					</li>
+
+					<li class="nav-item">
 						<a class="nav-link" href="/lista-usuarios">Usuarios</a>
 					</li>
 
@@ -45,6 +49,10 @@
 
 					<li class="nav-item">
 						<a class="nav-link" href="/permiso/ver">Permisos</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/lista-personas">Personas</a>
 					</li>
 
 					<li class="nav-item dropdown">
@@ -122,8 +130,8 @@
 						<th> Fecha </th>
 						<th> Lugar </th>
 						<th> Persona </th>
-						
-						
+
+
 					</tr>
 
 				</thead>
@@ -131,12 +139,12 @@
 				<tbody>
 
 					<tr th:each="listaDePermisos : ${listaDePermisos}">
-						<td> <span th:text="${listaDePermisos.fecha}"/> </td>
-						<td> <span th:text="${listaDePermisos.desdeHasta}"/> </td>
-						<td><span th:text="${listaDePermisos.pedido.nombre}"/> </td>
-						
-						
-						
+						<td> <span th:text="${listaDePermisos.fecha}" /> </td>
+						<td> <span th:text="${listaDePermisos.desdeHasta}" /> </td>
+						<td><span th:text="${listaDePermisos.pedido.nombre}" /> </td>
+
+
+
 					</tr>
 				</tbody>
 
@@ -149,14 +157,7 @@
 
 	</div>
 
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-		</div>
-		<!-- /.container -->
-	</footer>
-
+	
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -104,16 +104,13 @@ public class HomeController {
 	}
 
 	@GetMapping("/lista-personas")
-	public ModelAndView listaPersonas(@RequestParam(name = "qr", required = false) String qr) {
+	public ModelAndView listaPersonas() {
 		ModelAndView mov = new ModelAndView();
 		List<PersonaModel> list = personaService.listPersonaModel();
 		mov.addObject("listaPersonas", list);
-		mov.addObject("qr", qr);
-		if(qr !=null){
-			mov.setViewName(ViewRouteHelper.QR);
-		}else{
+		
 			mov.setViewName(ViewRouteHelper.PERSONAS);
-		}
+		
 		return mov;
 	}
 

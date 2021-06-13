@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Modern Business - Start Bootstrap Template</title>
+	<title>Lista Personas</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,8 +30,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/rodado/buscar">Buscar Permiso por dominio</a>
+					</li>
 
-					
 					<li class="nav-item">
 						<a class="nav-link" href="/lista-usuarios">Usuarios</a>
 					</li>
@@ -43,6 +44,13 @@
 						<a class="nav-link" href="/perfiles/lista-perfiles">Perfiles</a>
 					</li>
 
+					<li class="nav-item">
+						<a class="nav-link" href="/permiso/ver">Permisos</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/lista-personas">Personas</a>
+					</li>
 
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
@@ -54,6 +62,9 @@
 
 						</div>
 					</li>
+
+
+
 				</ul>
 			</div>
 		</div>
@@ -63,10 +74,12 @@
 	<div class="container">
 
 		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">Personas en la BD
-			<small></small>
-		</h1>
+		<div style="margin: 50px;">
+			<h1 class="mt-4 mb-3">Personas en la BD
+				<small></small>
+			</h1>
 
+		</div>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="/">Home</a>
@@ -76,39 +89,32 @@
 		<table cellpadding="5">
 
 			<thead>
-				<tr>										
+				<tr>
 					<th> Nombre </th>
-					<th> Apellido </th>	
-					<th> Dni </th>					
-					
+					<th> Apellido </th>
+					<th> Dni </th>
+
 				</tr>
 			</thead>
 			<tbody>
 
-				<tr th:each="persona : ${listaPersonas}">									
+				<tr th:each="persona : ${listaPersonas}">
 					<td> <span th:text="${persona.nombre}" /> </td>
 					<td> <span th:text="${persona.apellido}" /> </td>
 					<td> <span th:text="${persona.dni}" /> </td>
 				</tr>
 
 			</tbody>
-			<li class="nav-item">
+
 			</li>
 		</table>
+
+		<p> </p>
 		<a class="btn btn-primary" th:href="@{/persona/agregarPersona}">Agregar</a>
-		<a class="btn btn-primary" th:href="@{/persona/permisoPersona}" target="_blank"> Ver permisos por persona</a>
+		<a class="btn btn-primary" th:href="@{/persona/permisoPersona}" target="_blank"> Ver permisos por
+			persona</a>
 	</div>
 	<!-- /.container -->
-
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-		</div>
-
-
-		<!-- /.container -->
-	</footer>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
