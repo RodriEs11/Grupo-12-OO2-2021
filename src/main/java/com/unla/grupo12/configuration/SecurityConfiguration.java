@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-				.antMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*", "/vendor/jquery/*",
+				.antMatchers("/css/*", "/imgs/*", "/images/*", "/js/*", "/vendor/bootstrap/css/*", "/vendor/jquery/*",
 						"/vendor/bootstrap/js/*", "/registrarse", "/rodado","/rodado/buscar","/rodado/agregar","/permiso/buscar"
 						,"/pedirDniQR","/generateAndDownloadQRCode","/verqr"
 						, "/registrarse", "/persona/*", "/permiso", "/permiso/*", "/rodado").permitAll().anyRequest().authenticated()
