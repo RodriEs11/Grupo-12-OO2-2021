@@ -13,7 +13,10 @@ function cargarDatosPersona(){
     var nombre = getParameterByName("nombre");
     var nombreHtml = document.getElementById("nombreCompleto");
 
-    nombreHtml.innerHTML = nombre ;
+    var apellido = getParameterByName("apellido");
+   
+
+    nombreHtml.innerHTML = nombre + " " + apellido;
 
     var dni = getParameterByName("dni");
     var dniHtml = document.getElementById("dni");
