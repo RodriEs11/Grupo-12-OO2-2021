@@ -104,15 +104,22 @@ public class HomeController {
 		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
 				.body(new InputStreamResource(pdf));
 	}
-	
+
 	@GetMapping("/lista-personas")
-	public ModelAndView listaPersonas() {
-		ModelAndView mov = new ModelAndView(ViewRouteHelper.PERSONAS);
+	public ModelAndView listaPersonas(@RequestParam(name = "qr", required = false) String qr) {
+		ModelAndView mov = new ModelAndView();
 		List<PersonaModel> list = personaService.listPersonaModel();
 		mov.addObject("listaPersonas", list);
+		mov.addObject("qr", qr);
+		if(qr !=null){
+			mov.setViewName(ViewRouteHelper.QR);
+		}else{
+			mov.setViewName(ViewRouteHelper.PERSONAS);
+		}
 		return mov;
 	}
-	
+
+
 	@GetMapping("/lista-permisos")
 	public ModelAndView listaPermisos() {
 		ModelAndView mov = new ModelAndView(ViewRouteHelper.ListPERMISOS);

@@ -99,7 +99,7 @@
 					<td> <span th:text="${persona.nombre}" /> </td>
 					<td> <span th:text="${persona.apellido}" /> </td>
 					<td> <span th:text="${persona.dni}" /> </td>
-					<td> <a class="btn btn-primary" th:href="@{'persona/generarUrl/' + ${persona.idPersona}}"> URL </a> </td>
+					<td> <a class="btn btn-primary" th:href="@{'/generateAndDownloadQRCode/' + ${persona.idPersona}}"> Generar QR </a> </td>
 				</tr>
 
 			</tbody>
