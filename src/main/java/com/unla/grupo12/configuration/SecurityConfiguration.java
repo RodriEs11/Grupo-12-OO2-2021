@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	@Qualifier("usuarioService")
 	public UsuarioServiceImpl usuarioService;
@@ -25,8 +25,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-		
-		
+
+
 		auth.userDetailsService(usuarioService).passwordEncoder(new BCryptPasswordEncoder());
 
 	}
@@ -37,7 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*", "/vendor/jquery/*",
 						"/vendor/bootstrap/js/*", "/registrarse", "/rodado","/rodado/buscar","/rodado/agregar","/permiso/buscar"
-						, "/registrarse", "/persona/*", "/permiso", "/permiso/*", "/rodado","/pedirDniQR","/generateAndDownloadQRCode","/verqr").permitAll().anyRequest().authenticated()
+						,"/pedirDniQR","/generateAndDownloadQRCode","/verqr"
+						, "/registrarse", "/persona/*", "/permiso", "/permiso/*", "/rodado").permitAll().anyRequest().authenticated()
 				.and().formLogin().loginPage("/login").loginProcessingUrl("/loginprocess").usernameParameter("username").passwordParameter("password")
 				.defaultSuccessUrl("/loginsuccess").permitAll().and().logout().logoutUrl("/logout")
 				.logoutSuccessUrl("/logout").permitAll();

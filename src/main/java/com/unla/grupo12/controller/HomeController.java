@@ -1,5 +1,6 @@
 package com.unla.grupo12.controller;
 
+import com.unla.grupo12.entity.Permiso;
 import com.unla.grupo12.helpers.ViewRouteHelper;
 import com.unla.grupo12.model.UsuarioModel;
 import com.unla.grupo12.model.PerfilModel;
@@ -41,7 +42,7 @@ public class HomeController {
 	@Autowired
 	@Qualifier("personaService")
 	private IPersonaService personaService;
-	
+
 	@Autowired
 	@Qualifier("permisoService")
 	private IPermisoService permisoService;
@@ -56,7 +57,7 @@ public class HomeController {
 
 	@GetMapping("/login")
 	public String login(Model model, @RequestParam(name = "error", required = false) String error,
-			@RequestParam(name = "logout", required = false) String logout) {
+											@RequestParam(name = "logout", required = false) String logout) {
 
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
@@ -67,7 +68,7 @@ public class HomeController {
 
 	@GetMapping("/logout")
 	public String logout(Model model) {
-		
+
 		usuarioService.logoutUsuario();
 		return ViewRouteHelper.LOGOUT;
 
@@ -79,17 +80,20 @@ public class HomeController {
 		return ViewRouteHelper.INDEX;
 
 	}
-	
+
+
+
+
 	@GetMapping("/lista-usuarios")
 	public ModelAndView listaUsuario() {
 		ModelAndView mov = new ModelAndView(ViewRouteHelper.USUARIOS);
 		List<UsuarioModel> list = usuarioService.listUsuarios();
 		mov.addObject("listaUsuarios", list);
-		
+
 		return mov;
 	}
 
-	
+
 	@GetMapping(value = "/usuarios-pdf", produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> usuarioReporte() throws IOException {
 		ByteArrayInputStream pdf = usuarioService.generacionPdf();
@@ -113,20 +117,23 @@ public class HomeController {
 		return mov;
 	}
 
-	
-	@GetMapping("/lista-permisos")
-	public ModelAndView listaPermisos() {
-		ModelAndView mov = new ModelAndView(ViewRouteHelper.ListPERMISOS);
-		List<PermisoModel> list = permisoService.listPermisoModel();
-		mov.addObject("listPermisos", list);
-		return mov;
-	}
-
 	@GetMapping("/verqr")
 	public ModelAndView verQR(@RequestParam(name = "qr", required = false) String qr) {
 		ModelAndView mov = new ModelAndView(ViewRouteHelper.QR);
 
 		mov.addObject("qr", qr);
+
+		return mov;
+	}
+
+
+
+	@PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
+	@GetMapping("/lista-permisos")
+	public ModelAndView listaPermiso() {
+		ModelAndView mov = new ModelAndView(ViewRouteHelper.PERMISO);
+		List<Permiso> list = permisoService.listPermisos();
+		mov.addObject("listaPermisos", list);
 
 		return mov;
 	}
