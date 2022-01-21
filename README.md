@@ -1,7 +1,7 @@
 # Requisitos
 - Spring Suite Tool 4
 - Maven
-- Tener creado un schema en el servidor MySql llamada 'grupo-12-bbd-oo2-2021'
+- Tener creado un schema en el servidor MySql llamado 'grupo-12-bbd-oo2-2021'
 
 # Instrucciones
 - Abrir una terminal en el mismo directorio y colocar la siguiente instrucción
