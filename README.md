@@ -12,4 +12,19 @@
 > localhost:8080
 - Una vez hecho el deployment, se nos creara en nuestra base de datos *grupo-12-bbd-oo2-2021* las tablas necesarias automáticamente, es necesario cargar manualmente en la base de datos los tipos de perfiles que se registrarán (admin, user, auditor, etc...)
 
+# Git-Hub Page
+Podremos visualizar el contenido de nuestra base de datos en el siguiente enlace
+https://rodries11.github.io/grupo-12-OO2-2021/
 
+Siguiendo la lista de parametros para poder visualizar todo desde un link estático, obtenido por un codigo QR
+Los parámetros son:
+nombre=
+dni=
+desde=
+hasta=
+tipoPermiso = (1 Permiso diario / 2 Permiso periodo)
+motivo=
+dias=
+vacaciones= (1 SI / 0 NO )
+dominio=
+vehiculo=
