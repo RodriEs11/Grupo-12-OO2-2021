@@ -16,15 +16,18 @@
 Podremos visualizar el contenido de nuestra base de datos en el siguiente enlace
 https://rodries11.github.io/grupo-12-OO2-2021/
 
-Siguiendo la lista de parametros para poder visualizar todo desde un link estático, obtenido por un codigo QR
+Siguiendo la lista de parametros es posible visualizar todo desde un link estático, obtenido por un codigo QR
+
 Los parámetros son:
-nombre=
-dni=
-desde=
-hasta=
-tipoPermiso = (1 Permiso diario / 2 Permiso periodo)
-motivo=
-dias=
-vacaciones= (1 SI / 0 NO )
-dominio=
-vehiculo=
+- nombre=
+- dni=
+- desde=
+- hasta=
+- tipoPermiso = (1 Permiso diario / 2 Permiso periodo)
+- motivo=
+- dias=
+- vacaciones= (1 SI / 0 NO )
+- dominio=
+- vehiculo=
+
+Ejemplo: https://rodries11.github.io/grupo-12-OO2-2021/?nombre=rodrigo+espindola&?dni=12345678&?desde=01/01/2020&?hasta=31/12/2020&tipoPermiso=2&motivo=Prueba&dias=300&vacaciones=0
