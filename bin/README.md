@@ -1,15 +1,36 @@
-# grupo-12-OO2-2021
-Primera parte del TPC, Sistema integrador (versión web con bases de datos)
+# Proyecto
+Utilización de Spring, Hibernate, Java y base de datos MySql, alta, baja, modificación y consulta de datos
 
-- Se creó la vista para el login haciendo referencia a los usuarios que hay ya precargados en la bd. Para testear el login, es necesario crear en la base de datos un perfil con el nombre "Admin" y un usuario asignado a este perfil, 
-para loguearse, la clave debe estar encriptada con el metodo new BCryptPasswordEncoder().encode(contraseña) sino tira error.
+## Requisitos
+- Spring Suite Tool 4
+- Maven
+- Tener creado un schema en el servidor MySql llamado 'grupo-12-bbd-oo2-2021'
 
-- El nuevo usuario que se agrega, se carga con la clave encriptada en la bd.
+## Instrucciones
+- Abrir una terminal en el mismo directorio y colocar la siguiente instrucción
+> *mvn clean* 
+- Abrir el proyecto en Spring Suite Tool 4
+- Hacer el deploy del servidor
+- Probar el servidor en la siguiente dirección
+> localhost:8080
+- Una vez hecho el deployment, se nos creara en nuestra base de datos *grupo-12-bbd-oo2-2021* las tablas necesarias automáticamente, es necesario cargar manualmente en la base de datos los tipos de perfiles que se registrarán (admin, user, auditor, etc...)
 
-- Dentro de la pestaña "Usuarios" se pueden agregar, eliminar o editar los usuarios que hay en la base de datos, ademas se puede generar un archivo PDF con el listado de usuarios.
+## Git-Hub Page
+Podremos visualizar el contenido de nuestra base de datos en el siguiente enlace
+https://rodries11.github.io/grupo-12-OO2-2021/
 
-- Dentro de la pestaña "Agregar Usuarios" se creo un formulario para poder agregar a un nuevo usuario. Con el boton "Registrar" se agrega un nuevo usuario a la BD redireccionando a la lista de usuarios para visualizarlo
-- Un usuario con el perfil Admin, puede editar, agregar o eliminar un usuario o perfil, mientras que uno con el perfil Auditoria solo puede generar el reporte en un pdf, en caso de querer modificar algo saltara a la vista de error por falta de permiso.
+Siguiendo la lista de parametros es posible visualizar todo desde un link estático, obtenido por un codigo QR
 
+Los parámetros son:
+- nombre=
+- dni=
+- desde=
+- hasta=
+- tipoPermiso = (1 Permiso diario / 2 Permiso periodo)
+- motivo=
+- dias=
+- vacaciones= (1 SI / 0 NO )
+- dominio=
+- vehiculo=
 
-
+Ejemplo: https://rodries11.github.io/grupo-12-OO2-2021/?nombre=rodrigo+espindola&?dni=12345678&?desde=01/01/2020&?hasta=31/12/2020&tipoPermiso=2&motivo=Prueba&dias=300&vacaciones=0

@@ -142,6 +142,11 @@
 
 
 
+		<dependency>
+			<groupId>com.unla</groupId>
+			<artifactId>proyecto-oo2</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 	</dependencies>
 
 

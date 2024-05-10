@@ -59,10 +59,19 @@ public class PerfilServiceImpl implements IPerfilService {
 	}
 	
 	@Override
-	public PerfilModel findByNombre(String name) {
+	public PerfilModel findByNombre(String name) throws Exception {
+		
 		Perfil resultado = perfilRepository.findByNombre(name);
 		
-		return perfilConverter.entityToModel(resultado);
+		
+		if(resultado != null) {
+			return perfilConverter.entityToModel(resultado);
+		}else {
+			return null;
+		}
+		
+		
+		
 	}
 
 

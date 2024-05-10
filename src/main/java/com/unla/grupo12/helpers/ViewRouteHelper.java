@@ -37,7 +37,7 @@ public class ViewRouteHelper {
 	public static final String TIPO_PERMISO = "home/tipoPermiso";
 	public static final String PERMISO_DIARIO_AGREGAR = "home/agregarPermisoDiario2";
 	public static final String PERMISO_PERIODO_AGREGAR = "home/agregarPermisoPeriodo2";
-	public static final String PERMISO = "home/listPermiso";
+	public static final String PERMISO = "home/listPermisoxPersona";
 	public static final String PEDIR_DNI_QR = "home/pedirDniQR";
 
 }

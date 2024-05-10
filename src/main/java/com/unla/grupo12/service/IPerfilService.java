@@ -16,7 +16,7 @@ public interface IPerfilService {
 
 	PerfilModel findById(Long id);
 	
-	PerfilModel findByNombre(String name);
+	PerfilModel findByNombre(String name) throws Exception;
 
 	boolean darDeBaja(Long id) throws Exception;
 

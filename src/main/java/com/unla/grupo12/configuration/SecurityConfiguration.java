@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 						,"/pedirDniQR","/generateAndDownloadQRCode","/verqr"
 						, "/registrarse", "/persona/*", "/permiso", "/permiso/*", "/rodado").permitAll().anyRequest().authenticated()
 				.and().formLogin().loginPage("/login").loginProcessingUrl("/loginprocess").usernameParameter("username").passwordParameter("password")
-				.defaultSuccessUrl("/loginsuccess").permitAll().and().logout().logoutUrl("/logout")
+				.defaultSuccessUrl("/loginsuccess", true).permitAll().and().logout().logoutUrl("/logout")
 				.logoutSuccessUrl("/logout").permitAll();
 
 	}

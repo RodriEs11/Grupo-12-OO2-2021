@@ -32,7 +32,7 @@ import java.util.List;
 //REALIZA UN MAPEO HACIA localhost:8080/
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 
 public class HomeController {
 
@@ -48,7 +48,7 @@ public class HomeController {
 	private IPermisoService permisoService;
 
 	@PreAuthorize("hasAnyAuthority('Admin', 'Auditoria')")
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String index() {
 
 		return ViewRouteHelper.INDEX;
@@ -74,10 +74,18 @@ public class HomeController {
 
 	}
 
+	
+	@GetMapping("/loginprocess")
+	public String logincProcess(Model model) {
+
+		return "redirect:/loginsuccess";
+
+	}
+	
 	@GetMapping("/loginsuccess")
 	public String loginCheck(Model model) {
 
-		return ViewRouteHelper.INDEX;
+		return "redirect:/home";
 
 	}
 
